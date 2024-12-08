@@ -13,7 +13,7 @@ function Header() {
     { id: "Contact", contant: "Contact" },
   ];
   return (
-    <div className="sticky flex justify-center top-[45px]">
+    <div className="fixed w-screen flex justify-center top-[45px] z-50">
       <div className=" flex  flex-col justify-between w-[70vw] h-[87px] border-2">
         <div>
           <h1 className="text-center font-bold text-xl">
