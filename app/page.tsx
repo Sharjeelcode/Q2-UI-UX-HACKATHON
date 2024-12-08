@@ -1,14 +1,22 @@
 import Image from "next/image";
 import heroBackgroundImg from "@/app/assets/heroBackgroundImg.png";
+import Hero from "./components/Hero";
+
 export default function Home() {
   return (
-    <>
-      <div className="w-screen h-screen opacity-80 relative bg-black z-40"></div>
+    <div className="relative w-full min-h-screen">
+      {/* Background Image */}
       <Image
         src={heroBackgroundImg}
-        alt=""
-        className="max-h-screen z-10 absolute top-0"
+        alt="Hero background"
+        layout="fill"
+        objectFit="cover"
+        priority
+        className="opacity-20 gt1"
       />
-    </>
+
+      {/* Hero Content */}
+      <div className="relative z-10">{/* <Hero /> */}</div>
+    </div>
   );
 }
