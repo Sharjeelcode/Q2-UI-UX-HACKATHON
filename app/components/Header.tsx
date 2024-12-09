@@ -33,8 +33,8 @@ function Header() {
           <div className="flex justify-between  bottom-0">
             <div className="flex gap-4 items-center text-lg">
               {headermenu.map((menu) => (
-                <ul>
-                  <li key={menu.id} className="flex items-center">
+                <ul key={menu.id}>
+                  <li className="flex items-center">
                     <Link
                       href={menu.contant === "Home" ? "/" : `${menu.contant}`}
                       className="flex items-center gap-1"

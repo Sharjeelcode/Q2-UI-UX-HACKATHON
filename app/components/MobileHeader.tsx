@@ -22,7 +22,7 @@ function MobileHeader({ menuitem }: MobileHeaderProps) {
       </div>
       {menuBtn && (
         <div className="lg:hidden flex gap-4  flex-col z-40 fixed right-0 text-lg font-bold items-center pt-4 h-screen float-right bg-black w-[60vw]">
-          {menuitem.map((menu: any) => (
+          {menuitem.map((menu) => (
             <ul key={menu.id}>
               <li className="flex items-center">
                 <Link href={menu.contant === "Home" ? "/" : `${menu.contant}`}>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import heroBackgroundImg from "@/app/assets/heroBackgroundImg.png";
 import Hero from "./components/Hero";
 
