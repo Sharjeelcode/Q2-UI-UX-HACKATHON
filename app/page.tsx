@@ -4,19 +4,22 @@ import Hero from "./components/Hero";
 
 export default function Home() {
   return (
-    <div className="relative w-full min-h-screen ">
-      {/* Background Image */}
-      <Image
-        src={heroBackgroundImg}
-        alt="Hero background"
-        layout="fill"
-        objectFit="cover"
-        priority
-        className="opacity-20 gt1"
-      />
-
+    <div
+      className="w-full min-h-screen"
+      style={{
+        backgroundImage: `url(${heroBackgroundImg.src})`, // Optional: Replace with a background color if needed
+        backgroundSize: "cover", // Makes the image cover the entire div
+        backgroundPosition: "center", // Centers the background
+        backgroundRepeat: "no-repeat", // Prevents the image from repeating
+        backgroundColor: "#f0f0f0", // Add a fallback background color
+        opacity: "",
+      }}
+    >
+      <div className="w-full min-h-screen bg-black opacity-85"></div>
       {/* Hero Content */}
-      <div className="relative z-10">{/* <Hero /> */}</div>
+      <div className="">
+        <Hero />
+      </div>
     </div>
   );
 }

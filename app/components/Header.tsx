@@ -4,8 +4,13 @@ import searchIcon from "@/app/assets/Group.png";
 import handbag from "@/app/assets/Handbag.png";
 import aboutmenu from "@/app/assets/aboutmenu.png";
 import MobileHeader from "./MobileHeader";
+import Link from "next/link";
 function Header() {
-  const headermenu = [
+  interface MenuItem {
+    id: string;
+    contant: string;
+  }
+  const headermenu: MenuItem[] = [
     { id: "Home", contant: "Home" },
     { id: "Menu", contant: "Menu" },
     { id: "Blog", contant: "Blog" },
@@ -16,32 +21,37 @@ function Header() {
   return (
     <>
       {/* small devices header */}
-      <MobileHeader />
+      <MobileHeader menuitem={headermenu} />
       {/* large devices header */}
-      <div className="hidden lg:flex fixed w-screen  justify-center top-[35px]">
+      <div className="hidden lg:flex fixed w-screen  justify-center top-[35px] z-50">
         <div className=" flex  flex-col justify-between w-[70vw] h-[87px] border-2 border-black">
           <div>
-            <h1 className="text-center font-bold text-xl">
+            <h1 className="text-center font-bold text-2xl">
               <span className="text-[#FF9F0D] ">Food</span>tuck
             </h1>
           </div>
           <div className="flex justify-between  bottom-0">
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-4 items-center text-lg">
               {headermenu.map((menu) => (
                 <ul>
                   <li key={menu.id} className="flex items-center">
-                    {menu.contant != "About" ? (
-                      menu.contant
-                    ) : (
-                      <>
-                        {menu.contant}{" "}
-                        <Image
-                          src={aboutmenu}
-                          alt=""
-                          className="w-[12px] h-[12px]"
-                        />
-                      </>
-                    )}
+                    <Link
+                      href={menu.contant === "Home" ? "/" : `${menu.contant}`}
+                      className="flex items-center gap-1"
+                    >
+                      {menu.contant != "About" ? (
+                        menu.contant
+                      ) : (
+                        <>
+                          {menu.contant}{" "}
+                          <Image
+                            src={aboutmenu}
+                            alt=""
+                            className="w-[12px] h-[12px]"
+                          />
+                        </>
+                      )}
+                    </Link>
                   </li>
                 </ul>
               ))}
