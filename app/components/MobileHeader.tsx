@@ -4,13 +4,13 @@ import menuIcon from "@/app/assets/burgerMenu.jpg";
 import Image from "next/image";
 import Link from "next/link";
 
-function MobileHeader({ menuitem }) {
+interface MobileHeaderProps {
+  menuitem: { id: string; contant: string }[];
+}
+function MobileHeader({ menuitem }: MobileHeaderProps) {
   const [menuBtn, setmenuBtn] = useState(false);
-  interface MobileHeaderProps {
-    menuitem: { id: string; contant: string }[];
-  }
   function handleMenu() {
-    menuBtn === false ? setmenuBtn(true) : setmenuBtn(false);
+    setmenuBtn((prev) => !prev);
   }
   return (
     <>
@@ -23,8 +23,8 @@ function MobileHeader({ menuitem }) {
       {menuBtn && (
         <div className="lg:hidden flex gap-4  flex-col z-40 fixed right-0 text-lg font-bold items-center pt-4 h-screen float-right bg-black w-[60vw]">
           {menuitem.map((menu: any) => (
-            <ul className="">
-              <li key={menu.id} className="flex items-center">
+            <ul key={menu.id}>
+              <li className="flex items-center">
                 <Link href={menu.contant === "Home" ? "/" : `${menu.contant}`}>
                   {menu.contant}
                 </Link>
