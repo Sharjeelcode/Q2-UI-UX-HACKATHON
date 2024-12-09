@@ -3,7 +3,7 @@ import React from "react";
 import searchIcon from "@/app/assets/Group.png";
 import handbag from "@/app/assets/Handbag.png";
 import aboutmenu from "@/app/assets/aboutmenu.png";
-import menuIcon from "@/app/assets/burgerMenu.jpg";
+import MobileHeader from "./MobileHeader";
 function Header() {
   const headermenu = [
     { id: "Home", contant: "Home" },
@@ -16,16 +16,7 @@ function Header() {
   return (
     <>
       {/* small devices header */}
-      <div className="sticky top-0 z-50 flex justify-between px-2 py-2  bg-black">
-        <h1 className="font-bold text-xl">
-          <span className="text-[#FF9F0D] ">Food</span>tuck
-        </h1>
-        <Image src={menuIcon} alt="" className="h-8 w-8" />
-      </div>
-      <div className="w-[50vw] bg-black">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos totam
-        tenetur libero, asperiores ea labore dicta dignissimos qui beatae ut.
-      </div>
+      <MobileHeader />
       {/* large devices header */}
       <div className="hidden lg:flex fixed w-screen  justify-center top-[35px]">
         <div className=" flex  flex-col justify-between w-[70vw] h-[87px] border-2 border-black">
