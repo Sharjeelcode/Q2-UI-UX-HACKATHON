@@ -19,7 +19,8 @@ function Footer() {
                 Support?
               </h1>
               <h6 className="pt-3">
-                Don't wait, make a smart & logical quote here. It's pretty easy.
+                Don &apos;t wait, make a smart & logical quote here. It&apos;s
+                pretty easy.
               </h6>
             </div>
             <div className="flex flex-col md:flex-row justify-center md:justify-end items-center gap-4 md:gap-0">
