@@ -19,7 +19,7 @@ function Footer() {
                 Support?
               </h1>
               <h6 className="pt-3">
-                Don &apos;t wait, make a smart & logical quote here. It&apos;s
+                Don&apos;t wait, make a smart & logical quote here. It&apos;s
                 pretty easy.
               </h6>
             </div>
