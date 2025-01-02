@@ -12,7 +12,7 @@ import nugets from "@/app/assets/nugets.png";
 import burger from "@/app/assets/burger.png";
 import fruits from "@/app/assets/fruit.png";
 import sec4Image from "@/app/assets/sec4Img.png";
-import sec4font from "@/app/assets/sec4Font.png";
+import sec4font from "@/app/assets/sec4font.png";
 import iconbox from "@/app/assets/iconbox.png";
 import experience from "@/app/assets/experince.png";
 import clientImage from "@/app/assets/Clients.png";
