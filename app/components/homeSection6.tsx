@@ -1,8 +1,8 @@
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface HomeSection6Props {
-  src: any;
+  src: string | StaticImageData;
   title: string;
   description: string;
   price: string;

@@ -178,7 +178,7 @@ export default function Home() {
             <Image src={sec6pic} alt="" />
           </div>
           <div className="lg:w-[55%] ">
-            <div className="flex flex-col md:flex-row gap-2">
+            <div className="flex flex-col md:flex-row ">
               <div className="flex flex-col gap-4 ">
                 <HomeSection6
                   src={s6i1}
