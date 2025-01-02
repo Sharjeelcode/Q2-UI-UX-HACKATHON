@@ -23,8 +23,8 @@ function Header() {
       {/* small devices header */}
       <MobileHeader menuitem={headermenu} />
       {/* large devices header */}
-      <div className="hidden lg:flex fixed w-screen  justify-center top-[35px] z-50">
-        <div className=" flex  flex-col justify-between w-[70vw] h-[87px] border-2 border-black">
+      <div className="hidden lg:flex fixed w-screen  justify-center top-[15px] z-50">
+        <div className=" flex  flex-col justify-between w-[70vw] h-[87px] ">
           <div>
             <h1 className="text-center font-bold text-2xl">
               <span className="text-[#FF9F0D] ">Food</span>tuck

@@ -33,15 +33,15 @@ export default function Home() {
         </div>
       </div>
       {/* 2nd section */}
-      <div className="mx-[10vw] my-[17vh]">
-        <div className="flex gap-6 ">
-          <div className="flex flex-col gap-4 w-[50%]">
+      <div className="mx-4 md:mx-[10vw] my-[10vh] flex flex-wrap">
+        <div className="flex gap-6  flex-wrap lg:flex-nowrap justify-center">
+          <div className="flex flex-col gap-4 justify-center lg:w-[50%]">
             <Image src={aboutFont} alt="" />
-            <h1 className="text-[35px] font-bold">
+            <h1 className=" text-2xl md:text-[35px] font-bold">
               <span className="text-[#FF9F0D]">We </span> Create the best <br />{" "}
               foody product
             </h1>
-            <p className="text-lg">
+            <p className="lg:text-lg">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
               diam pellentesque bibendum non dui volutpat fringilla bibendum.
               Urna, elit augue urna, vitae feugiat pretium donec id elementum.
@@ -52,7 +52,7 @@ export default function Home() {
               <span>
                 <Image src={check} alt="" />
               </span>
-              <p className="text-lg">
+              <p className="lg:text-lg">
                 {" "}
                 Lacus nisi, et ac dapibus sit eu velit in consequat.
               </p>
@@ -61,7 +61,7 @@ export default function Home() {
               <span>
                 <Image src={check} alt="" />
               </span>
-              <p className="text-lg">
+              <p className="lg:text-lg">
                 {" "}
                 Quisque diam pellentesque bibendum non dui volutpat fringilla{" "}
               </p>
@@ -70,23 +70,28 @@ export default function Home() {
               <span>
                 <Image src={check} alt="" />
               </span>
-              <p className="text-lg">
+              <p className="lg:text-lg">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
               </p>
             </div>
-            <div>
+            <div className="hidden lg:flex">
               <button className="bg-[#FF9F0D] rounded-full text-xl px-12 py-4">
                 Read More
               </button>
             </div>
           </div>
-          <div className="w-[50%]">
+          <div className="w-auto lg:w-[50%] mx-4">
             <div>
               <Image src={egg} alt="" className="w-full mb-2" />
             </div>
-            <div className="flex gap-2">
-              <Image src={dish} alt="" className="w-[50%]" />
-              <Image src={sandwich} alt="" className="w-[50%]" />
+            <div className="flex gap-2 w-[100%]">
+              <Image src={dish} alt="" className="w-[50%] lg:w-[50%] " />
+              <Image src={sandwich} alt="" className="w-[50%] lg:w-[50%]" />
+            </div>
+            <div className=" flex justify-center mt-4 lg:hidden">
+              <button className="bg-[#FF9F0D] rounded-full text-xl px-12 py-4">
+                Read More
+              </button>
             </div>
           </div>
         </div>
@@ -96,15 +101,15 @@ export default function Home() {
       <div className="mx-[10vw] my-[17vh]">
         <div className="flex flex-col items-center mb-3">
           <Image src={foodCatagory} alt="" className="items-center" />
-          <h1 className="text-[35px] font-bold">
+          <h1 className="text-2xl md:text-[35px] font-bold">
             <span className="text-[#FF9F0D]">Ch</span>oose Food Iteam
           </h1>
         </div>
-        <div className="flex gap-4">
-          <Image src={save30} alt="" className="w-full mb-2" />
-          <Image src={burger} alt="" className="w-full mb-2" />
-          <Image src={fruits} alt="" className="w-full mb-2" />
-          <Image src={nugets} alt="" className="w-full mb-2" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <Image src={save30} alt="" className="w-auto sm:w-full mb-2" />
+          <Image src={burger} alt="" className="w-auto sm:w-full mb-2" />
+          <Image src={fruits} alt="" className="w-auto sm:w-full mb-2" />
+          <Image src={nugets} alt="" className="w-auto sm:w-full mb-2" />
         </div>
       </div>
     </>
