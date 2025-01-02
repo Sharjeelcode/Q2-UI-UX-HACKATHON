@@ -11,7 +11,22 @@ import save30 from "@/app/assets/save30.png";
 import nugets from "@/app/assets/nugets.png";
 import burger from "@/app/assets/burger.png";
 import fruits from "@/app/assets/fruit.png";
-
+import sec4Image from "@/app/assets/sec4Img.png";
+import sec4font from "@/app/assets/sec4Font.png";
+import iconbox from "@/app/assets/iconbox.png";
+import experience from "@/app/assets/experince.png";
+import clientImage from "@/app/assets/Clients.png";
+import choose from "@/app/assets/choose.png";
+import sec6pic from "@/app/assets/sec6pic.png";
+import s6i1 from "@/app/assets/s6i1.png";
+import s6i2 from "@/app/assets/s6i2.png";
+import s6i3 from "@/app/assets/s6i3.png";
+import s6i4 from "@/app/assets/s6i4.png";
+import s6i5 from "@/app/assets/s6i5.png";
+import s6i6 from "@/app/assets/s6i6.png";
+import s6i7 from "@/app/assets/s6i7.png";
+import s6i8 from "@/app/assets/s6i8.png";
+import HomeSection6 from "./components/homeSection6";
 export default function Home() {
   return (
     <>
@@ -33,7 +48,7 @@ export default function Home() {
         </div>
       </div>
       {/* 2nd section */}
-      <div className="mx-4 md:mx-[10vw] my-[10vh] flex flex-wrap">
+      <div className="mx-4 md:mx-[10vw] my-[5vh] flex flex-wrap">
         <div className="flex gap-6  flex-wrap lg:flex-nowrap justify-center">
           <div className="flex flex-col gap-4 justify-center lg:w-[50%]">
             <Image src={aboutFont} alt="" />
@@ -98,7 +113,7 @@ export default function Home() {
       </div>
       {/* 3rd section */}
 
-      <div className="mx-[10vw] my-[17vh]">
+      <div className="mx-[10vw] my-[10vh]">
         <div className="flex flex-col items-center mb-3">
           <Image src={foodCatagory} alt="" className="items-center" />
           <h1 className="text-2xl md:text-[35px] font-bold">
@@ -110,6 +125,114 @@ export default function Home() {
           <Image src={burger} alt="" className="w-auto sm:w-full mb-2" />
           <Image src={fruits} alt="" className="w-auto sm:w-full mb-2" />
           <Image src={nugets} alt="" className="w-auto sm:w-full mb-2" />
+        </div>
+      </div>
+
+      {/* 4th section */}
+      <div className="mx-4 md:mx-[10vw] my-[5vh] flex flex-wrap">
+        <div className="flex gap-6  flex-wrap lg:flex-nowrap justify-center">
+          <div className="flex flex-col gap-4 justify-center lg:w-[50%]">
+            <Image src={sec4font} alt="" />
+            <h1 className=" text-2xl md:text-[35px] font-bold leading-10">
+              <span className="text-[#FF9F0D]">Ex</span>ordinary taste <br />{" "}
+              and Experienced
+            </h1>
+            <p className="lg:text-lg">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              diam pellentesque bibendum non dui volutpat fringilla bibendum.
+              Urna, elit augue urna, vitae feugiat pretium donec id elementum.
+              Ultrices mattis sed vitae mus risus. Lacus nisi, et ac dapibus sit
+              eu velit in consequat.
+            </p>
+            <Image src={iconbox} alt="" />
+            <Image src={experience} alt="" />
+          </div>
+          <div className="w-auto lg:w-[50%] mx-4">
+            <Image src={sec4Image} alt="" className="w-full mb-2" />
+          </div>
+        </div>
+      </div>
+      {/* 5th section */}
+      <div>
+        <Image src={clientImage} alt="" />
+      </div>
+      {/* 6th section */}
+      <div className="mx-4 md:mx-[10vw] my-[10vh]">
+        <div className="flex flex-col items-center mb-3">
+          <Image src={choose} alt="" className="items-center" />
+          <h1 className="text-2xl md:text-[35px] font-bold">
+            <span className="text-[#FF9F0D]">Fr</span>om Our Menu
+          </h1>
+        </div>
+        <ul className="flex flex-wrap gap-4 item-center justify-center lg:gap-20">
+          <li className="text-[#FF9F0D]">Breakfast</li>
+          <li>Lunch</li>
+          <li>Dinner</li>
+          <li>Desert</li>
+          <li>Drink</li>
+          <li>Snack</li>
+          <li>Suops</li>
+        </ul>
+        <div className="my-4 flex gap-4 flex-wrap md:flex-nowrap">
+          <div className="lg:w-[45%] h-auto">
+            <Image src={sec6pic} alt="" />
+          </div>
+          <div className="lg:w-[55%] ">
+            <div className="flex flex-col md:flex-row gap-2">
+              <div className="flex flex-col gap-4 ">
+                <HomeSection6
+                  src={s6i1}
+                  title="Lettuce Leaf"
+                  description="Lacus nisi, et ac dapibus velit in consequat."
+                  price="12.5$"
+                />
+                <HomeSection6
+                  src={s6i2}
+                  title="Fresh Breakfast"
+                  description="Lacus nisi, et ac dapibus velit in consequat."
+                  price="12.5$"
+                />
+                <HomeSection6
+                  src={s6i3}
+                  title="Mild Butter"
+                  description="Lacus nisi, et ac dapibus velit in consequat."
+                  price="12.5$"
+                />
+                <HomeSection6
+                  src={s6i4}
+                  title="Fresh Bread"
+                  description="Lacus nisi, et ac dapibus velit in consequat."
+                  price="12.5$"
+                />
+              </div>
+              <div className="flex flex-col gap-4 ">
+                <HomeSection6
+                  src={s6i5}
+                  title="Glow Cheese"
+                  description="Lacus nisi, et ac dapibus velit in consequat."
+                  price="12.5$"
+                />
+                <HomeSection6
+                  src={s6i6}
+                  title="Italian Pizza"
+                  description="Lacus nisi, et ac dapibus velit in consequat."
+                  price="12.5$"
+                />
+                <HomeSection6
+                  src={s6i7}
+                  title="Sllice Beef"
+                  description="Lacus nisi, et ac dapibus velit in consequat."
+                  price="12.5$"
+                />
+                <HomeSection6
+                  src={s6i8}
+                  title="Mushaom Pizza"
+                  description="Lacus nisi, et ac dapibus velit in consequat."
+                  price="12.5$"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
