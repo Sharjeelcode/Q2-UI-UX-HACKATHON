@@ -1,32 +1,40 @@
-import heroBackgroundImg from "@/app/assets/heroBackgroundImg.png";
 import Hero from "./components/Hero";
 import Image from "next/image";
-import aboutFont from "@/app/assets/aboutText.png";
-import check from "@/app/assets/check.png";
-import egg from "@/app/assets/egg.png";
-import dish from "@/app/assets/dish.png";
-import sandwich from "@/app/assets/sandwich.png";
-import foodCatagory from "@/app/assets/Food Category.png";
-import save30 from "@/app/assets/save30.png";
-import nugets from "@/app/assets/nugets.png";
-import burger from "@/app/assets/burger.png";
-import fruits from "@/app/assets/fruit.png";
-import sec4Image from "@/app/assets/sec4Img.png";
-import sec4font from "@/app/assets/sec4font.png";
-import iconbox from "@/app/assets/iconbox.png";
-import experience from "@/app/assets/experince.png";
-import clientImage from "@/app/assets/Clients.png";
-import choose from "@/app/assets/choose.png";
-import sec6pic from "@/app/assets/sec6pic.png";
-import s6i1 from "@/app/assets/s6i1.png";
-import s6i2 from "@/app/assets/s6i2.png";
-import s6i3 from "@/app/assets/s6i3.png";
-import s6i4 from "@/app/assets/s6i4.png";
-import s6i5 from "@/app/assets/s6i5.png";
-import s6i6 from "@/app/assets/s6i6.png";
-import s6i7 from "@/app/assets/s6i7.png";
-import s6i8 from "@/app/assets/s6i8.png";
 import HomeSection6 from "./components/homeSection6";
+import {
+  heroBackgroundImg,
+  aboutFont,
+  check,
+  egg,
+  dish,
+  sandwich,
+  foodCatagory,
+  save30,
+  nugets,
+  burger,
+  fruits,
+  sec4Image,
+  sec4font,
+  iconbox,
+  experience,
+  clientImage,
+  choose,
+  sec6pic,
+  s6i1,
+  s6i2,
+  s6i3,
+  s6i4,
+  s6i5,
+  s6i6,
+  s6i7,
+  s6i8,
+  chef,
+  chefgroup,
+  testmonials,
+  TestimonialsImg,
+  restraindCreativeProcess,
+  blogPost,
+} from "@/app/assets/exportAssets";
 export default function Home() {
   return (
     <>
@@ -233,6 +241,41 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      {/* 7th section */}
+      <div className="mx-4 md:mx-[10vw] my-[5vh]">
+        <div className="flex flex-col items-center mb-3">
+          <Image src={chef} alt="" className="items-center" />
+          <h1 className="text-2xl md:text-[35px] font-bold">
+            <span className="text-[#FF9F0D]">Me</span>et Our Chef
+          </h1>
+        </div>
+      </div>
+      <Image src={chefgroup} alt="" className="pr-5 lg:pr-10" />
+      {/* 8th section */}
+      <div className="mx-4 md:mx-[10vw] my-[5vh]">
+        <div className="flex items-center lg:block lg:items-start flex-col mb-3">
+          <Image src={testmonials} alt="" />
+          <h1 className="text-xl md:text-[35px] font-bold">
+            What our client are saying
+          </h1>
+        </div>
+        <div className="flex items-center mt-8">
+          <Image src={TestimonialsImg} alt="" />
+        </div>
+      </div>
+
+      {/* 9th section */}
+      <Image src={restraindCreativeProcess} alt="" />
+
+      {/* 10th section */}
+      <div className="mx-4 md:mx-[10vw] my-[5vh]">
+        <div className="flex flex-col items-center mb-3">
+          <Image src={blogPost} alt="" className="items-center" />
+          <h1 className="text-2xl md:text-[35px] font-bold">
+            <span className="text-[#FF9F0D]">La</span>test Nes & Blog
+          </h1>
         </div>
       </div>
     </>
