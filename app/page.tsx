@@ -34,7 +34,11 @@ import {
   TestimonialsImg,
   restraindCreativeProcess,
   blogPost,
+  blogImage,
+  blogImg2,
+  blogImg3,
 } from "@/app/assets/exportAssets";
+import BlogCard from "./components/BlogCard";
 export default function Home() {
   return (
     <>
@@ -120,7 +124,6 @@ export default function Home() {
         </div>
       </div>
       {/* 3rd section */}
-
       <div className="mx-[10vw] my-[10vh]">
         <div className="flex flex-col items-center mb-3">
           <Image src={foodCatagory} alt="" className="items-center" />
@@ -135,7 +138,6 @@ export default function Home() {
           <Image src={nugets} alt="" className="w-auto sm:w-full mb-2" />
         </div>
       </div>
-
       {/* 4th section */}
       <div className="mx-4 md:mx-[10vw] my-[5vh] flex flex-wrap">
         <div className="flex gap-6  flex-wrap lg:flex-nowrap justify-center">
@@ -265,10 +267,8 @@ export default function Home() {
           <Image src={TestimonialsImg} alt="" />
         </div>
       </div>
-
       {/* 9th section */}
       <Image src={restraindCreativeProcess} alt="" />
-
       {/* 10th section */}
       <div className="mx-4 md:mx-[10vw] my-[5vh]">
         <div className="flex flex-col items-center mb-3">
@@ -277,6 +277,21 @@ export default function Home() {
             <span className="text-[#FF9F0D]">La</span>test Nes & Blog
           </h1>
         </div>
+      </div>
+      {/* 11th section */}
+      <div className="flex flex-col items-center justify-center gap-2 md:flex-row ">
+        <BlogCard
+          image={blogImage}
+          title={" Pellentesque Non Efficitur Mi Aliquam Convallis Mi Quis"}
+        />
+        <BlogCard
+          image={blogImg2}
+          title={"Morbi Sodales Tellus Elit, In Blandit Risus Suscipit A"}
+        />
+        <BlogCard
+          image={blogImg3}
+          title={"Curabitur rutrum velit ac congue malesuada"}
+        />
       </div>
     </>
   );

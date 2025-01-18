@@ -29,7 +29,7 @@ function Footer() {
                 placeholder="Enter Your Email"
                 className="bg-[#FF9F0D] text-white px-6 py-2 outline-none text-sm rounded-sm placeholder-white w-full md:w-auto"
               />
-              <button className="bg-white px-6 py-2 text-[#FF9F0D] rounded-sm text-sm">
+              <button className="bg-white px-4 lg:px-6 py-2 text-[#FF9F0D] rounded-sm text-sm">
                 Subscribe Now
               </button>
             </div>

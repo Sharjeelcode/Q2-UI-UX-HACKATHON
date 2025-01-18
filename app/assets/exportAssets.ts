@@ -30,6 +30,10 @@ import testmonials from "@/app/assets/testmonials.png";
 import TestimonialsImg from "@/app/assets/TestimonialsImg.png";
 import restraindCreativeProcess from "@/app/assets/restraindCreativeProcess.png";
 import blogPost from "@/app/assets/Blog Post.png";
+import blogImage from "@/app/assets/Image Placeholder.png";
+import blogcardIcon from "@/app/assets/blogcardIcon.png";
+import blogImg2 from "@/app/assets/blogImg2.png";
+import blogImg3 from "@/app/assets/blogImg3.png";
 
 export {
   heroBackgroundImg,
@@ -64,4 +68,8 @@ export {
   TestimonialsImg,
   restraindCreativeProcess,
   blogPost,
+  blogImage,
+  blogcardIcon,
+  blogImg2,
+  blogImg3,
 };
