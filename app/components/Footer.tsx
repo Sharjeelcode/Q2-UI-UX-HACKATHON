@@ -35,6 +35,7 @@ function Footer() {
                 </button>
               </div>
             </div>
+
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8 ">
               <div>
                 <h1 className="text-2xl pb-4">About Us.</h1>
