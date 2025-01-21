@@ -1,6 +1,5 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
-import blogImage from "@/app/assets/Image Placeholder.png";
 import blogcardIcon from "@/app/assets/blogcardIcon.png";
 interface blogCard {
   image: string | StaticImageData;
