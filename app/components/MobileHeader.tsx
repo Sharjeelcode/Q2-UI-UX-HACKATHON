@@ -14,7 +14,7 @@ function MobileHeader({ menuitem }: MobileHeaderProps) {
   }
   return (
     <>
-      <div className="lg:hidden  sticky top-0 z-50 flex justify-between px-2 py-2  bg-black">
+      <div className="lg:hidden  sticky top-0 z-50 flex justify-between px-2 py-2  bg-black text-white">
         <h1 className="font-bold text-xl">
           <span className="text-[#FF9F0D] ">Food</span>tuck
         </h1>

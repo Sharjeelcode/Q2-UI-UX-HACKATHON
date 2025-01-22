@@ -216,7 +216,7 @@ export default function Home() {
                     price="12.5$"
                   />
                 </div>
-                <div className="flex flex-col gap-4 ">
+                <div className="flex flex-col gap-4 mt-4 md:mt-0">
                   <HomeSection6
                     src={s6i5}
                     title="Glow Cheese"
