@@ -21,6 +21,7 @@ function Header() {
     { id: "Blog", contant: "Blog" },
     { id: "Chefs", contant: "Chefs" },
     { id: "About", contant: "About" },
+    { id: "Shop", contant: "Shop" },
     { id: "Contact", contant: "Contact" },
   ];
   return (

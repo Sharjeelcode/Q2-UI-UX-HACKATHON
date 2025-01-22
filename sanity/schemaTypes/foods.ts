@@ -16,9 +16,10 @@ export default {
         "Category of the food item (e.g., Burger, Sandwich, Drink, etc.)",
     },
     {
-      name: "price",
+      name: "salePrice",
       type: "number",
-      title: "Current Price",
+      title: "Sale Price",
+      description: "Price before discount (if any)",
     },
     {
       name: "originalPrice",

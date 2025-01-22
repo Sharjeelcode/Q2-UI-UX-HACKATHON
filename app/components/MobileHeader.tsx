@@ -21,7 +21,7 @@ function MobileHeader({ menuitem }: MobileHeaderProps) {
         <Image src={menuIcon} alt="" className="h-8 w-8" onClick={handleMenu} />
       </div>
       {menuBtn && (
-        <div className="lg:hidden flex gap-4  flex-col z-40 fixed right-0 text-lg font-bold items-center pt-4 h-screen float-right bg-black w-[60vw]">
+        <div className="lg:hidden flex gap-4  flex-col z-40 fixed right-0 text-lg font-bold items-center pt-4 h-screen float-right bg-black w-[60vw] text-white">
           {menuitem.map((menu) => (
             <ul key={menu.id}>
               <li className="flex items-center">
