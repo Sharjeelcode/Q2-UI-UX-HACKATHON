@@ -10,7 +10,7 @@ import footerHero from "@/app/assets/footerHero.png";
 function Footer() {
   return (
     <>
-      <div className=" bottom-0">
+      <div className="pt-8 bg-[#0a0a0a] text-[#ededed] bottom-0">
         <div className="relative h-auto w-auto">
           <div className=" mx-auto max-w-7xl px-6 my-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4 md:mx-20 border-b-2 border-[#FF9F0D] pb-4 items-center">

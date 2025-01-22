@@ -19,7 +19,7 @@ function Header() {
     { id: "Home", contant: "Home" },
     { id: "Menu", contant: "Menu" },
     { id: "Blog", contant: "Blog" },
-    { id: "Pages", contant: "Pages" },
+    { id: "Chefs", contant: "Chefs" },
     { id: "About", contant: "About" },
     { id: "Contact", contant: "Contact" },
   ];
@@ -30,7 +30,7 @@ function Header() {
 
       {/* condional rendring of header menu for diffrent pages */}
       {pathname == "/" ? (
-        <div>
+        <div className="bg-[#0a0a0a] text-[#ededed]">
           {/* large devices header */}
           <div className="hidden lg:flex fixed w-screen  justify-center top-[15px] z-50">
             <div className=" flex  flex-col justify-between w-[70vw] h-[87px] ">
@@ -85,9 +85,9 @@ function Header() {
           </div>
         </div>
       ) : (
-        <div>
+        <div className="bg-[#0a0a0a] text-[#ededed]">
           {/* large devices header */}
-          <div className="hidden lg:flex sticky top-0 w-screen  justify-around items-center py-6 z-50 bg-[#0a0a0a]">
+          <div className="hidden lg:flex lg:fixed top-0 w-screen  justify-around items-center py-6 z-50 bg-[#0a0a0a]">
             <h1 className="text-center font-bold text-2xl">
               <span className="text-[#FF9F0D] ">Food</span>tuck
             </h1>
