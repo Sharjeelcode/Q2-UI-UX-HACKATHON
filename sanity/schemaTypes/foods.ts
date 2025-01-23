@@ -28,6 +28,11 @@ export default {
       description: "Price before discount (if any)",
     },
     {
+      name: "quantity",
+      type: "number",
+      title: "Quantity",
+    },
+    {
       name: "tags",
       type: "array",
       title: "Tags",
