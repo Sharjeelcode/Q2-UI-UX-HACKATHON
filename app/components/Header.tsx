@@ -16,13 +16,13 @@ interface MenuItem {
 function Header() {
   const pathname = usePathname();
   const headermenu: MenuItem[] = [
-    { id: "Home", contant: "Home" },
-    { id: "Menu", contant: "Menu" },
-    { id: "Blog", contant: "Blog" },
-    { id: "Chefs", contant: "Chefs" },
-    { id: "About", contant: "About" },
-    { id: "Shop", contant: "Shop" },
-    { id: "Contact", contant: "Contact" },
+    { id: "Home", contant: "/Home" },
+    { id: "Menu", contant: "/Menu" },
+    { id: "Blog", contant: "/Blog" },
+    { id: "Chefs", contant: "/Chefs" },
+    { id: "About", contant: "/About" },
+    { id: "Shop", contant: "/Shop" },
+    { id: "Contact", contant: "/Contact" },
   ];
   return (
     <>
@@ -46,16 +46,14 @@ function Header() {
                     <ul key={menu.id}>
                       <li className="flex items-center">
                         <Link
-                          href={
-                            menu.contant === "Home" ? "/" : `${menu.contant}`
-                          }
+                          href={menu.id === "Home" ? "/" : `${menu.id}`}
                           className="flex items-center gap-1"
                         >
-                          {menu.contant != "About" ? (
-                            menu.contant
+                          {menu.id != "About" ? (
+                            menu.id
                           ) : (
                             <>
-                              {menu.contant}{" "}
+                              {menu.id}{" "}
                               <Image
                                 src={aboutmenu}
                                 alt=""
@@ -97,14 +95,14 @@ function Header() {
                 <ul key={menu.id}>
                   <li className="flex items-center">
                     <Link
-                      href={menu.contant === "Home" ? "/" : `${menu.contant}`}
+                      href={menu.contant === "/Home" ? "/" : `${menu.contant}`}
                       className="flex items-center gap-1"
                     >
-                      {menu.contant != "About" ? (
-                        menu.contant
+                      {menu.id != "About" ? (
+                        menu.id
                       ) : (
                         <>
-                          {menu.contant}{" "}
+                          {menu.id}{" "}
                           <Image
                             src={aboutmenu}
                             alt=""

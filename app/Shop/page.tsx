@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import AllPagesHeroImg from "../components/AllPagesHeroImg";
 import Image from "next/image";
 import MagnifyingGlass from "@/app/assets/MagnifyingGlass.png";
@@ -6,33 +7,47 @@ import ShopSideBarImg from "@/app/assets/ShopSideBarImg.png";
 import ArrowCircleRight from "@/app/assets/ArrowCircleRight.png";
 import latestProducts from "@/app/assets/latestProducts.png";
 import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import Product from "../components/ProductCard";
 
 interface Food {
   name: string;
-  category: string;
   salePrice: number;
   originalPrice: number;
-  tags: string[];
   image: string;
-  description: string;
-  available: boolean;
   _id: string;
 }
 
 const query = `*[_type == "food"]{
   name,
-  category,
   salePrice,
   originalPrice,
-  tags,
   image,
   description,
   available,
   _id
 }`;
-async function page() {
-  const foodList = await client.fetch(query);
+function Page() {
+  const [foodList, setFoodList] = useState([]);
+
+  useEffect(() => {
+    const loadFoodList = async () => {
+      // Ensure this runs only on the client
+      if (typeof window !== "undefined") {
+        const storedFoodList = localStorage.getItem("foodList");
+
+        if (storedFoodList) {
+          // Load from localStorage if available
+          setFoodList(JSON.parse(storedFoodList));
+        } else {
+          // Fetch from server if not in localStorage
+          const fetchedFoodList = await client.fetch(query);
+          setFoodList(fetchedFoodList);
+        }
+      }
+    };
+
+    loadFoodList();
+  }, []);
 
   return (
     <>
@@ -62,60 +77,28 @@ async function page() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-12 my-8 justify-items-center">
             {foodList.map((food: Food) => {
               return (
-                <div key={food._id}>
-                  <div
-                    className="relative bg-cover bg-center h-56 w-64"
-                    style={{
-                      backgroundImage: `url(${urlFor(food.image).url()})`,
-                    }}
-                  >
-                    {food.salePrice && (
-                      <span className="absolute top-3 left-2 bg-[#FF9F0D] text-white px-3 text-sm rounded">
-                        Sell
-                      </span>
-                    )}
-                  </div>
-                  <h1 className="text-lg font-bold">{food.name}</h1>
-                  {food.salePrice ? (
-                    <div className="flex gap-2">
-                      <p className="text-[#FF9F0D] ">${food.salePrice}.00</p>
-                      <p className="text-gray-400 line-through">
-                        ${food.originalPrice}.00
-                      </p>
-                    </div>
-                  ) : (
-                    <p className="text-[#FF9F0D] ">${food.originalPrice}.00</p>
-                  )}
-                </div>
+                <>
+                  <Product
+                    key={food._id}
+                    name={food.name}
+                    salePrice={food.salePrice}
+                    originalPrice={food.originalPrice}
+                    image={food.image}
+                    _id={food._id}
+                  />
+                </>
               );
             })}
             {foodList.map((food: Food) => {
               return (
-                <div key={food._id}>
-                  <div
-                    className="relative bg-cover bg-center h-56 w-64"
-                    style={{
-                      backgroundImage: `url(${urlFor(food.image).url()})`,
-                    }}
-                  >
-                    {food.salePrice && (
-                      <span className="absolute top-3 left-2 bg-[#FF9F0D] text-white px-3 text-sm rounded">
-                        Sell
-                      </span>
-                    )}
-                  </div>
-                  <h1 className="text-lg font-bold">{food.name}</h1>
-                  {food.salePrice ? (
-                    <div className="flex gap-2">
-                      <p className="text-[#FF9F0D] ">${food.salePrice}.00</p>
-                      <p className="text-gray-400 line-through">
-                        ${food.originalPrice}.00
-                      </p>
-                    </div>
-                  ) : (
-                    <p className="text-[#FF9F0D] ">${food.originalPrice}.00</p>
-                  )}
-                </div>
+                <Product
+                  key={food._id}
+                  name={food.name}
+                  salePrice={food.salePrice}
+                  originalPrice={food.originalPrice}
+                  image={food.image}
+                  _id={food._id}
+                />
               );
             })}
           </div>
@@ -239,4 +222,4 @@ async function page() {
   );
 }
 
-export default page;
+export default Page;
