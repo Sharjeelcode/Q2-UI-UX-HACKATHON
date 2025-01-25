@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import AllPagesHeroImg from "../components/AllPagesHeroImg";
 import Image from "next/image";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -8,9 +7,13 @@ import { FaInstagram } from "react-icons/fa";
 import { BsYoutube } from "react-icons/bs";
 import { IoLogoPinterest } from "react-icons/io5";
 import MagnifyingGlass from "@/app/assets/MagnifyingGlass.png";
+import AllPagesHeroImg from "@/app/components/AllPagesHeroImg";
 import authorImg from "@/app/assets/authorImg.png";
+import { SlCalender } from "react-icons/sl";
+import { TiMessages } from "react-icons/ti";
+import { FaRegUserCircle } from "react-icons/fa";
 import star from "@/app/assets/Star.png";
-import { client } from "../../sanity/lib/client";
+import blogDemo from "@/app/assets/blogDemo.png";
 import {
   s6i1,
   s6i2,
@@ -20,61 +23,85 @@ import {
   s6i6,
   s6i7,
   s6i8,
-} from "../assets/exportAssets";
-import BlogItem from "../components/BlogItem";
+} from "../../assets/exportAssets";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "../../../sanity/lib/image";
 
 interface Blog {
   name: string;
-  blog_short_description: string;
+  description: [];
   author: string;
   releaseDate: string;
   image: string;
   _id: string;
+  tags: [];
 }
+function Page({ params }: { params: { id: string } }) {
+  const [blogDetail, setBlogDetail] = useState({} as Blog);
 
-const query = `*[_type == "Blogs"]{
-  name,
-  blog_short_description,
-  author,
-  image,
-  releaseDate,
-  _id
-}`;
+  const query = `*[_type == "Blogs" && _id == "${params.id}"] {
+  name,description,author,releaseDate,image,_id,tags}`;
 
-function Page() {
-  const [blogList, setBlogList] = useState([]);
   useEffect(() => {
-    const getPosts = async () => {
-      const blogs = await client.fetch(query);
-      setBlogList(blogs);
-    };
-    getPosts();
-  }, []);
+    async function getData() {
+      const Blog = await client.fetch(query);
+      setBlogDetail(Blog[0]);
+    }
+    getData();
+  }, [query]);
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString); // Convert the string to a Date object
+    return date.toLocaleDateString("en-US", {
+      month: "short", // Abbreviated month name
+      day: "2-digit", // Two-digit day
+      year: "numeric", // Four-digit year
+    });
+  };
+  console.log(blogDetail.image);
 
   return (
     <div>
-      <AllPagesHeroImg page="Blog List" />
+      <AllPagesHeroImg page="Blog Details" />
       <div className="flex  flex-col lg:flex-row mx-4 md:mx-[5vw] justify-center my-[3vh] px-2 md:px-4 lg:px-10 md:gap-4 lg:gap-10  ">
         {/* Blog Posts  */}
+        {blogDetail ? (
+          <div className="flex flex-col gap-4 mb-4 lg:w-[70vw] ">
+            <div className="flex flex-col gap-3">
+              <Image
+                src={
+                  blogDetail.image ? urlFor(blogDetail.image).url() : blogDemo
+                }
+                alt=""
+                className="md:h-80"
+                width={871}
+                height={520}
+              />
 
-        <div className="flex flex-col gap-4 mb-4 lg:w-[70vw] ">
-          {blogList ? (
-            blogList.map((blog: Blog) => {
-              return (
-                <BlogItem
-                  key={blog._id}
-                  name={blog.name}
-                  _id={blog._id}
-                  author={blog.author}
-                  releaseDate={blog.releaseDate}
-                  image={blog.image}
-                />
-              );
-            })
-          ) : (
-            <h1>Blogs Not Found</h1>
-          )}
-        </div>
+              <div className="flex gap-1 md:gap-2 items-center">
+                <h1 className="text-sm flex gap-2 items-center">
+                  <SlCalender className="text-[#FF9F0D]" />{" "}
+                  {formatDate(blogDetail.releaseDate)}
+                </h1>
+                <span>/</span>
+                <h1 className="flex gap-2 items-center">
+                  <TiMessages className="text-[#FF9F0D]" /> 3
+                </h1>
+                <h1 className="flex gap-2 items-center text-sm">
+                  <FaRegUserCircle className="text-[#FF9F0D]" />
+                  {blogDetail.author}
+                </h1>
+              </div>
+              <h1 className="text-lg md:text-xl lg:text-2xl font-bold">
+                {blogDetail.name}
+              </h1>
+              <hr />
+
+              <p>{blogDetail.description}</p>
+            </div>
+          </div>
+        ) : (
+          <div>Blog not found</div>
+        )}
 
         {/* Side Bar */}
         <div className="flex  flex-col gap-3 lg:w-[30vw]">

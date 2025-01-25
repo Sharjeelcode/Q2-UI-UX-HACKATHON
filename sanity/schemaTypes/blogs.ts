@@ -1,38 +1,40 @@
-export default {
+import { defineType, defineField } from "sanity";
+
+export default defineType({
   name: "Blogs",
   type: "document",
   title: "Blogs",
   fields: [
-    {
+    defineField({
       name: "name",
       type: "string",
-      title: "Blog Titile",
-      required: true,
-    },
-    {
+      title: "Blog Title",
+      validation: (Rule) => Rule.required().error("Blog Title is required"),
+    }),
+    defineField({
       name: "blog_short_description",
       type: "string",
-      title: "Blog short description",
-      description: "Short Discription of the blog",
-      required: true,
-    },
-    {
+      title: "Blog Short Description",
+      description: "Short description of the blog",
+      validation: (Rule) =>
+        Rule.required().error("Blog Short Description is required"),
+    }),
+    defineField({
       name: "author",
       type: "string",
       title: "Author",
-      required: true,
-    },
-    {
-      title: "Release date",
+      validation: (Rule) => Rule.required().error("Author is required"),
+    }),
+    defineField({
+      title: "Release Date",
       name: "releaseDate",
       type: "date",
       options: {
         dateFormat: "DD-MM-YYYY",
-        calendarTodayLabel: "Today",
       },
-      required: true,
-    },
-    {
+      validation: (Rule) => Rule.required().error("Release Date is required"),
+    }),
+    defineField({
       name: "tags",
       type: "array",
       title: "Tags",
@@ -40,27 +42,25 @@ export default {
       options: {
         layout: "tags",
       },
-      description: "Tags for Blog",
-    },
-    {
+      description: "Tags for the blog",
+    }),
+    defineField({
       name: "image",
       type: "image",
-      title: "Chef Image",
+      title: "Blog Image",
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: "description",
-      type: "text",
-      title: "Description",
-      description: "Detail bio or introduction about the Blog",
-    },
-    {
+    }),
+    defineField({
+      name: "body",
+      type: "blockContent",
+    }),
+    defineField({
       name: "available",
       type: "boolean",
       title: "Currently Active",
-      description: "Availability status of the Blog",
-    },
+      description: "Availability status of the blog",
+    }),
   ],
-};
+});

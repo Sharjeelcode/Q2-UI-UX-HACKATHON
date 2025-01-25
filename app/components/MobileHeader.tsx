@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import menuIcon from "@/app/assets/burgerMenu.jpg";
+import menuIconPng from "@/app/assets/burgerMenu.jpg";
+import crossIcon from "@/app/assets/crossIcon.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,8 +10,14 @@ interface MobileHeaderProps {
 }
 function MobileHeader({ menuitem }: MobileHeaderProps) {
   const [menuBtn, setmenuBtn] = useState(false);
+  const [menuIcon, setmenuIcon] = useState(menuIconPng);
   function handleMenu() {
     setmenuBtn((prev) => !prev);
+    if (menuBtn === true) {
+      setmenuIcon(menuIconPng);
+    } else {
+      setmenuIcon(crossIcon);
+    }
   }
   return (
     <>
@@ -25,8 +32,11 @@ function MobileHeader({ menuitem }: MobileHeaderProps) {
           {menuitem.map((menu) => (
             <ul key={menu.id}>
               <li className="flex items-center">
-                <Link href={menu.contant === "Home" ? "/" : `${menu.contant}`}>
-                  {menu.contant}
+                <Link
+                  onClick={handleMenu}
+                  href={menu.contant === "/Home" ? "/" : `${menu.contant}`}
+                >
+                  {menu.id}
                 </Link>
               </li>
             </ul>
