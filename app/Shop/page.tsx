@@ -42,6 +42,7 @@ function Page() {
           // Fetch from server if not in localStorage
           const fetchedFoodList = await client.fetch(query);
           setFoodList(fetchedFoodList);
+          console.log(fetchedFoodList);
         }
       }
     };
