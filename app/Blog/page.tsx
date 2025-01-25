@@ -9,7 +9,7 @@ import { BsYoutube } from "react-icons/bs";
 import { IoLogoPinterest } from "react-icons/io5";
 import MagnifyingGlass from "@/app/assets/MagnifyingGlass.png";
 import authorImg from "@/app/assets/authorImg.png";
-import star from "@/app/assets/star.png";
+import star from "@/app/assets/Star.png";
 import { client } from "../../sanity/lib/client";
 import {
   s6i1,
