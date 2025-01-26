@@ -8,6 +8,7 @@ import ArrowCircleRight from "@/app/assets/ArrowCircleRight.png";
 import latestProducts from "@/app/assets/latestProducts.png";
 import { client } from "@/sanity/lib/client";
 import Product from "../components/ProductCard";
+import Loader from "../components/Loader";
 
 interface Food {
   name: string;
@@ -28,28 +29,60 @@ const query = `*[_type == "food"]{
 }`;
 function Page() {
   const [foodList, setFoodList] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadFoodList = async () => {
-      // Ensure this runs only on the client
-      if (typeof window !== "undefined") {
-        const storedFoodList = localStorage.getItem("foodList");
+      try {
+        if (typeof window !== "undefined") {
+          setLoading(true);
 
-        if (storedFoodList) {
-          // Load from localStorage if available
-          setFoodList(JSON.parse(storedFoodList));
-        } else {
-          // Fetch from server if not in localStorage
-          const fetchedFoodList = await client.fetch(query);
-          setFoodList(fetchedFoodList);
-          console.log(fetchedFoodList);
+          // Check localStorage first
+          const storedFoodList = localStorage.getItem("foodList");
+
+          if (storedFoodList) {
+            setFoodList(JSON.parse(storedFoodList));
+          } else {
+            // Fetch from server
+            const fetchedFoodList = await client.fetch(query);
+            setFoodList(fetchedFoodList);
+
+            // Save to localStorage for future use
+            localStorage.setItem("foodList", JSON.stringify(fetchedFoodList));
+          }
         }
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          console.error("Error fetching data:", err.message);
+          setError(
+            err.message || "An error occurred while fetching product details."
+          );
+        } else {
+          console.error("An unknown error occurred:", err);
+          setError("An unknown error occurred while fetching product details.");
+        }
+      } finally {
+        setLoading(false);
       }
     };
 
     loadFoodList();
   }, []);
-
+  if (loading)
+    return (
+      <div className="text-center my-10">
+        <AllPagesHeroImg page="Blog List" />
+        <Loader />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="text-center text-red-500 my-10">
+        <AllPagesHeroImg page="Blog Details" />
+        {error}
+      </div>
+    );
   return (
     <>
       <AllPagesHeroImg page="Shop" />

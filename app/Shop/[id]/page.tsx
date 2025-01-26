@@ -12,6 +12,7 @@ import { urlFor } from "@/sanity/lib/image";
 import freshLime from "@/app/assets/freshLime.png";
 import { useEffect, useState } from "react";
 import Product from "@/app/components/ProductCard";
+import Loader from "@/app/components/Loader";
 
 interface Food {
   name: string;
@@ -26,30 +27,71 @@ interface Food {
 }
 
 function Page({ params }: { params: { id: string } }) {
-  const [productDetials, setProductDetials] = useState({} as Food);
+  const [productDetials, setProductDetails] = useState<Food>({} as Food);
   const [productList, setProductList] = useState<Food[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   const query = `*[_type == "food" && _id == "${params.id}"] {
-        name,
-        category,
-        salePrice,
-        originalPrice,
-        tags,
-        image,
-        description,
-        available,
-        _id
-      }`;
-  useEffect(() => {
-    async function getData() {
-      const foodList = await client.fetch(query);
-      setProductDetials(foodList[0]);
-      const storedFoodList = localStorage.getItem("foodList");
+  name,
+  category,
+  salePrice,
+  originalPrice,
+  tags,
+  image,
+  description,
+  available,
+  _id
+}`;
 
-      setProductList(storedFoodList ? JSON.parse(storedFoodList) : []);
-    }
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        setLoading(true);
+
+        // Fetch product details from server
+        const foodList = await client.fetch(query);
+
+        if (foodList.length > 0) {
+          setProductDetails(foodList[0]);
+        } else {
+          setError("Product not found.");
+        }
+
+        // Load product list from localStorage
+        const storedFoodList = localStorage.getItem("foodList");
+        setProductList(storedFoodList ? JSON.parse(storedFoodList) : []);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          console.error("Error fetching data:", err.message);
+          setError(
+            err.message || "An error occurred while fetching product details."
+          );
+        } else {
+          console.error("An unknown error occurred:", err);
+          setError("An unknown error occurred while fetching product details.");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
     getData();
   }, [query]);
+  if (loading)
+    return (
+      <div className="text-center my-10">
+        <AllPagesHeroImg page="Blog List" />
+        <Loader />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="text-center text-red-500 my-10">
+        <AllPagesHeroImg page="Blog Details" />
+        {error}
+      </div>
+    );
   return (
     <>
       <AllPagesHeroImg page="Shop Details" />

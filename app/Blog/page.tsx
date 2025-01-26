@@ -22,6 +22,7 @@ import {
   s6i8,
 } from "../assets/exportAssets";
 import BlogItem from "../components/BlogItem";
+import Loader from "../components/Loader";
 
 interface Blog {
   name: string;
@@ -43,14 +44,49 @@ const query = `*[_type == "Blogs"]{
 
 function Page() {
   const [blogList, setBlogList] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const getPosts = async () => {
-      const blogs = await client.fetch(query);
-      setBlogList(blogs);
+      try {
+        setLoading(true);
+        const blogs = await client.fetch(query);
+        if (blogs.length > 0) {
+          setBlogList(blogs);
+        } else {
+          setError("Blog not found");
+        }
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          console.error("Error fetching data:", err.message);
+          setError(
+            err.message || "An error occurred while fetching product details."
+          );
+        } else {
+          console.error("An unknown error occurred:", err);
+          setError("An unknown error occurred while fetching product details.");
+        }
+      } finally {
+        setLoading(false);
+      }
     };
     getPosts();
   }, []);
 
+  if (loading)
+    return (
+      <div className="text-center my-10">
+        <AllPagesHeroImg page="Blog List" />
+        <Loader />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="text-center text-red-500 my-10">
+        <AllPagesHeroImg page="Blog Details" />
+        {error}
+      </div>
+    );
   return (
     <div>
       <AllPagesHeroImg page="Blog List" />
