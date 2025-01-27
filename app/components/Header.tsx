@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React from "react";
 import searchIcon from "@/app/assets/Group.png";
-import aboutmenu from "@/app/assets/aboutmenu.png";
 import MagnifyingGlass from "@/app/assets/MagnifyingGlass.png";
 import User from "@/app/assets/User.png";
 import basket from "@/app/assets/basket.png";

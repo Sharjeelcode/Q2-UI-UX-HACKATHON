@@ -55,9 +55,7 @@ function Page() {
       } catch (err: unknown) {
         if (err instanceof Error) {
           console.error("Error fetching data:", err.message);
-          setError(
-            err.message || "An error occurred while fetching product details."
-          );
+          setError("An error occurred while fetching product details.");
         } else {
           console.error("An unknown error occurred:", err);
           setError("An unknown error occurred while fetching product details.");
