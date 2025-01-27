@@ -92,7 +92,6 @@ function Page() {
       <AllPagesHeroImg page="Blog List" />
       <div className="flex  flex-col lg:flex-row mx-4 md:mx-[5vw] justify-center my-[3vh] px-2 md:px-4 lg:px-10 md:gap-4 lg:gap-10  ">
         {/* Blog Posts  */}
-
         <div className="flex flex-col gap-4 mb-4 lg:w-[70vw] ">
           {blogList ? (
             blogList.map((blog: Blog) => {

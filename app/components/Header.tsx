@@ -49,18 +49,7 @@ function Header() {
                           href={menu.id === "Home" ? "/" : `${menu.id}`}
                           className="flex items-center gap-1"
                         >
-                          {menu.id != "About" ? (
-                            menu.id
-                          ) : (
-                            <>
-                              {menu.id}{" "}
-                              <Image
-                                src={aboutmenu}
-                                alt=""
-                                className="w-[12px] h-[12px]"
-                              />
-                            </>
-                          )}
+                          {menu.id != "About" ? menu.id : <>{menu.id} </>}
                         </Link>
                       </li>
                     </ul>
@@ -98,18 +87,7 @@ function Header() {
                       href={menu.contant === "/Home" ? "/" : `${menu.contant}`}
                       className="flex items-center gap-1"
                     >
-                      {menu.id != "About" ? (
-                        menu.id
-                      ) : (
-                        <>
-                          {menu.id}{" "}
-                          <Image
-                            src={aboutmenu}
-                            alt=""
-                            className="w-[12px] h-[12px]"
-                          />
-                        </>
-                      )}
+                      {menu.id != "About" ? menu.id : <>{menu.id} </>}
                     </Link>
                   </li>
                 </ul>
