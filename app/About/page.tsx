@@ -8,11 +8,14 @@ import chooseUs from "@/app/assets/chooseUs.png";
 import Student from "@/app/assets/Student.png";
 import Coffee from "@/app/assets/Coffee.png";
 import Person from "@/app/assets/Person.png";
+import chef from "@/app/assets/chef.png";
+import Testmonials from "../components/Testmonials";
+
 function page() {
   return (
     <>
       <AllPagesHeroImg page="About Us" />
-      <div className="flex flex-col  mx-4 md:mx-[5vw] justify-center my-[3vh] px-2 md:px-4 lg:px-10 md:gap-4 lg:gap-10  ">
+      <div className="flex flex-col  mx-4 md:mx-[5vw] justify-center my-[3vh] px- md:px-4 lg:px-10 md:gap-4 lg:gap-10  ">
         {/* About us section */}
         <div className="flex flex-col md:flex-row gap-2">
           <div className="md:w-[50%]">
@@ -81,8 +84,10 @@ function page() {
             </div>
           </div>
         </div>
+
+        {/* Our Team */}
+        <Testmonials />
       </div>
-      {/* Our Team */}
     </>
   );
 }

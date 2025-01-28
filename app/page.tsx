@@ -39,6 +39,7 @@ import {
   blogImg3,
 } from "@/app/assets/exportAssets";
 import BlogCard from "./components/BlogCard";
+import Testmonials from "./components/Testmonials";
 export default function Home() {
   return (
     <>
@@ -257,17 +258,7 @@ export default function Home() {
         </div>
         <Image src={chefgroup} alt="" className="pr-5 lg:pr-10" />
         {/* 8th section */}
-        <div className="mx-4 md:mx-[10vw] my-[5vh]">
-          <div className="flex items-center lg:block lg:items-start flex-col mb-3">
-            <Image src={testmonials} alt="" />
-            <h1 className="text-xl md:text-[35px] font-bold">
-              What our client are saying
-            </h1>
-          </div>
-          <div className="flex items-center mt-8">
-            <Image src={TestimonialsImg} alt="" />
-          </div>
-        </div>
+        <Testmonials />
         {/* 9th section */}
         <Image src={restraindCreativeProcess} alt="" />
         {/* 10th section */}

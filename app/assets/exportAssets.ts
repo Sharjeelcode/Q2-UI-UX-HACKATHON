@@ -34,6 +34,11 @@ import blogImage from "@/app/assets/Image Placeholder.png";
 import blogcardIcon from "@/app/assets/blogcardIcon.png";
 import blogImg2 from "@/app/assets/blogImg2.png";
 import blogImg3 from "@/app/assets/blogImg3.png";
+import testmonialProfile from "@/app/assets/testmonialProfile.png";
+import Quotes from "@/app/assets/Quotes.png";
+import star from "@/app/assets/Star.png";
+import leafs from "@/app/assets/leafs.png";
+import dot from "@/app/assets/Dot.png";
 
 export {
   heroBackgroundImg,
@@ -72,4 +77,9 @@ export {
   blogcardIcon,
   blogImg2,
   blogImg3,
+  testmonialProfile,
+  Quotes,
+  star,
+  leafs,
+  dot,
 };
