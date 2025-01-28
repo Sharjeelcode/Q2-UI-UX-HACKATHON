@@ -8,7 +8,6 @@ import chooseUs from "@/app/assets/chooseUs.png";
 import Student from "@/app/assets/Student.png";
 import Coffee from "@/app/assets/Coffee.png";
 import Person from "@/app/assets/Person.png";
-import chef from "@/app/assets/chef.png";
 import Testmonials from "../components/Testmonials";
 
 function page() {

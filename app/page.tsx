@@ -30,8 +30,6 @@ import {
   s6i8,
   chef,
   chefgroup,
-  testmonials,
-  TestimonialsImg,
   restraindCreativeProcess,
   blogPost,
   blogImage,
