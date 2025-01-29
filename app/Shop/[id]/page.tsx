@@ -1,15 +1,6 @@
 "use client";
 import AllPagesHeroImg from "@/app/components/AllPagesHeroImg";
-import star from "@/app/assets/Star.png";
-import Image from "next/image";
-import { MdOutlineShoppingBag } from "react-icons/md";
-import { AiFillTwitterCircle } from "react-icons/ai";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
-import { IoIosGitCompare, IoMdHeartEmpty } from "react-icons/io";
 import { client } from "@/sanity/lib/client";
-import QuanitityBtn from "@/app/components/QuanitityBtn";
-import { urlFor } from "@/sanity/lib/image";
-import freshLime from "@/app/assets/freshLime.png";
 import { useEffect, useState } from "react";
 import Product from "@/app/components/ProductCard";
 import Loader from "@/app/components/Loader";
