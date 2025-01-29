@@ -13,6 +13,7 @@ import freshLime from "@/app/assets/freshLime.png";
 import { useEffect, useState } from "react";
 import Product from "@/app/components/ProductCard";
 import Loader from "@/app/components/Loader";
+import ProductDetail from "@/app/components/ProductDetail";
 
 interface Food {
   name: string;
@@ -90,87 +91,21 @@ function Page({ params }: { params: { id: string } }) {
         {error}
       </div>
     );
+
   return (
     <>
       <AllPagesHeroImg page="Shop Details" />
       <div className="flex flex-col md:flex-row md:mx-[5vw]  my-[3vh] px-2 md:gap-4 lg:gap-160  ">
         {/* Product Details */}
-        <div className="md:w-[40%] lg:w-[70%]">
-          <Image
-            src={
-              productDetials.image
-                ? urlFor(productDetials.image).url()
-                : freshLime
-            }
-            width={500}
-            height={500}
-            // src={urlFor(productDetials.image).url()}
-            alt="magnifying glass"
-            className="w-full h-[80%] lg:h-[90%]"
-          />
-        </div>
-        <div className="md:w-[70%]">
-          <h1 className="font-bold text-4xl py-4">{productDetials.name}</h1>
-          <p className="pb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-            diam pellentesque bibendum non dui volutpat fringilla bibendum.
-            Urna, urna, vitae feugiat pretium donec id elementum. Ultrices
-            mattis sed vitae mus risus. Lacus nisi, et ac dapibus sit eu velit
-            in consequat.
-          </p>
-          <hr />
-          <h1 className="text-2xl font-bold mt-2">
-            {productDetials.salePrice ? (
-              <div className="flex gap-2">
-                <p className=" ">${productDetials.salePrice}.00</p>
-                <p className="text-gray-400 line-through">
-                  ${productDetials.originalPrice}.00
-                </p>
-              </div>
-            ) : (
-              <p className=" ">${productDetials.originalPrice}.00</p>
-            )}
-          </h1>
-          <div className="flex flex-col md:flex-row gap-4 text-gray-400">
-            <Image src={star} alt="magnifying glass" />
-            <div className="flex flex-row gap-2">
-              <p className="">5.0 Rating</p>
 
-              <p>|</p>
-              <p>22 Review</p>
-            </div>
-          </div>
-          <p className="py-4">Dictum/cursus/Risus</p>
-          <div className="flex gap-4 pb-4">
-            <QuanitityBtn />
-            <div>
-              <button className="bg-[#FF9F0D] text-sm px-4 lg:px-6 text-white flex gap-2 py-2 items-center">
-                <MdOutlineShoppingBag />
-                Add to cart
-              </button>
-            </div>
-          </div>
-          <hr />
-          <div className="flex flex-col gap-3 mt-4">
-            <h1 className="flex leading-[15px] gap-[15px] text-[15px]">
-              <IoMdHeartEmpty /> Add to Wishlist <IoIosGitCompare />
-              Compare
-            </h1>
-            <h1 className="leading-[15px] gap-[15px] text-[15px]">
-              Category: {productDetials.category}
-            </h1>
-            <h1 className="leading-[15px] gap-[15px] text-[15px]">
-              Tag: {productDetials.tags?.map((tag) => `${tag} `)}
-            </h1>
-          </div>
-          <div className="flex leading-[20px] gap-4 py-3">
-            Share: <FaInstagram className="text-[20px]" />{" "}
-            <AiFillTwitterCircle className="text-[20px]" />{" "}
-            <FaFacebook className="text-[20px]" />{" "}
-            <AiFillTwitterCircle className="text-[20px]" />
-          </div>
-          <hr />
-        </div>
+        <ProductDetail
+          image={productDetials.image}
+          name={productDetials.name}
+          salePrice={productDetials.salePrice}
+          orignalPrice={productDetials.originalPrice}
+          tags={productDetials.tags}
+          catagory={productDetials.category}
+        />
       </div>
       <div className="flex flex-col  md:mx-[5vw]  my-[3vh] px-2  ">
         {/* product discription */}
