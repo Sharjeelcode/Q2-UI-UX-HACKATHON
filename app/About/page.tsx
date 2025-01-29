@@ -9,6 +9,7 @@ import Student from "@/app/assets/Student.png";
 import Coffee from "@/app/assets/Coffee.png";
 import Person from "@/app/assets/Person.png";
 import Testmonials from "../components/Testmonials";
+import { menudata1, menudata2 } from "@/Data/data";
 
 function page() {
   return (
@@ -55,7 +56,10 @@ function page() {
               pellentesque bibendum non dui volutpat fringilla bibendum.{" "}
             </p>
           </div>
-          <Image src={chooseUs} alt="Choose us" />
+          <div></div>
+          <div className="flex justify-center">
+            <Image src={chooseUs} alt="Choose us" />
+          </div>
           <div className="flex items-center flex-col md:flex-row gap-4">
             <div className="flex flex-col gap-4 items-center text-center md:w-[33%]">
               <Image src={Student} alt="Student" />
@@ -86,6 +90,82 @@ function page() {
 
         {/* Our Team */}
         <Testmonials />
+        <div className="flex flex-col gap-3">
+          <div className="text-center flex  flex-col gap-2">
+            <h1 className="text-2xl lg:text-4xl font-bold">Our Food Menu</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <br /> Varius sed pharetra dictum neque massa congue
+            </p>
+          </div>
+          <div className=" flex flex-col  justify-center items-center">
+            <ul className="flex justify-center gap-4 md:text-xl lg:text-2xl flex-wrap">
+              <li className="underline underline-offset-8 text-[#FF9F0D] hover:text-[#FF9F0D] cursor-pointer">
+                BreakFast
+              </li>
+              <li className="hover:text-[#FF9F0D] cursor-pointer hover:underline underline-offset-8">
+                Lunch
+              </li>
+              <li className="hover:text-[#FF9F0D] cursor-pointer hover:underline underline-offset-8">
+                Dinner
+              </li>
+              <li className="hover:text-[#FF9F0D] cursor-pointer hover:underline underline-offset-8">
+                Desert
+              </li>
+              <li className="hover:text-[#FF9F0D] cursor-pointer hover:underline underline-offset-8">
+                Drink
+              </li>
+              <li className="hover:text-[#FF9F0D] cursor-pointer hover:underline underline-offset-8">
+                Snack
+              </li>
+            </ul>
+          </div>
+          <hr />
+          <div className="flex flex-col md:flex-row justify-center gap-8 items-center">
+            <div>
+              {menudata1.map((data, index) => (
+                <div key={index}>
+                  <div className="flex flex-col justify-between  gap-4">
+                    <div className="flex justify-between items-center pt-2">
+                      <h2 className=" text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
+                        {data.title}
+                      </h2>
+                      <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
+                    </div>
+                    <div>
+                      <p className="text-[#4d4d4d] text-sm lg:text-lg w-[80%]">
+                        {data.para}
+                      </p>
+                      <p className="py-2">{data.some}</p>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              ))}
+            </div>
+            <div>
+              {menudata2.map((data, index) => (
+                <div key={index}>
+                  <div className="flex flex-col justify-between  gap-4">
+                    <div className="flex justify-between items-center pt-2">
+                      <h2 className=" text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
+                        {data.title}
+                      </h2>
+                      <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
+                    </div>
+                    <div>
+                      <p className="text-[#4d4d4d] text-sm lg:text-lg w-[80%]">
+                        {data.para}
+                      </p>
+                      <p className="py-2">{data.some}</p>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

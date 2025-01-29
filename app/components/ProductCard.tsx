@@ -21,7 +21,7 @@ const Product: React.FC<Food> = ({
   return (
     <Link href={`/Shop/${_id}`}>
       <div
-        className="relative bg-cover bg-center h-56 w-64"
+        className="relative bg-cover bg-center h-56 w-64 md:w-52 lg:w-64"
         style={{
           backgroundImage: `url(${urlFor(image).url()})`,
         }}

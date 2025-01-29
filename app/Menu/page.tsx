@@ -28,17 +28,19 @@ function page() {
             </h1>
             {menudata1.map((data, index) => (
               <div key={index}>
-                <div className="flex justify-between gap-4">
-                  <div>
-                    <h2 className="pt-4 text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
+                <div className="flex flex-col justify-between  gap-4">
+                  <div className="flex justify-between items-center pt-2">
+                    <h2 className=" text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
                       {data.title}
                     </h2>
+                    <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
+                  </div>
+                  <div>
                     <p className="text-[#4d4d4d] text-sm lg:text-lg w-[80%]">
                       {data.para}
                     </p>
                     <p className="py-2">{data.some}</p>
                   </div>
-                  <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
                 </div>
                 <hr />
               </div>
@@ -54,17 +56,19 @@ function page() {
             </h1>
             {menudata2.map((data, index) => (
               <div key={index}>
-                <div className="flex justify-between gap-4">
-                  <div>
-                    <h2 className="pt-4 text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
+                <div className="flex flex-col justify-between  gap-4">
+                  <div className="flex justify-between items-center pt-2">
+                    <h2 className=" text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
                       {data.title}
                     </h2>
+                    <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
+                  </div>
+                  <div>
                     <p className="text-[#4d4d4d] text-sm lg:text-lg w-[80%]">
                       {data.para}
                     </p>
                     <p className="py-2">{data.some}</p>
                   </div>
-                  <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
                 </div>
                 <hr />
               </div>
@@ -86,17 +90,19 @@ function page() {
             </h1>
             {menudata3.map((data, index) => (
               <div key={index}>
-                <div className="flex justify-between gap-4">
-                  <div>
-                    <h2 className="pt-4 text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
+                <div className="flex flex-col justify-between  gap-4">
+                  <div className="flex justify-between items-center pt-2">
+                    <h2 className=" text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
                       {data.title}
                     </h2>
+                    <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
+                  </div>
+                  <div>
                     <p className="text-[#4d4d4d] text-sm lg:text-lg w-[80%]">
                       {data.para}
                     </p>
                     <p className="py-2">{data.some}</p>
                   </div>
-                  <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
                 </div>
                 <hr />
               </div>
@@ -110,17 +116,19 @@ function page() {
             <h1 className="text-2xl lg:text-4xl font-bold pb-4">Drinks</h1>
             {menudata4.map((data, index) => (
               <div key={index}>
-                <div className="flex justify-between gap-4">
-                  <div>
-                    <h2 className="pt-4 text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
+                <div className="flex flex-col justify-between  gap-4">
+                  <div className="flex justify-between items-center pt-2">
+                    <h2 className=" text-lg lg:text-xl font-bold hover:text-[#FF9F0D]">
                       {data.title}
                     </h2>
+                    <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
+                  </div>
+                  <div>
                     <p className="text-[#4d4d4d] text-sm lg:text-lg w-[80%]">
                       {data.para}
                     </p>
                     <p className="py-2">{data.some}</p>
                   </div>
-                  <h1 className="text-[#FF9F0D] font-bold">{data.price}</h1>
                 </div>
                 <hr />
               </div>
@@ -134,7 +142,7 @@ function page() {
         <h1 className="text-center text-xl md:text-2xl lg:text-4xl font-bold">
           We work with the best pepole
         </h1>
-        <div className="flex flex-col md:flex-row items-center gap-4 mt-4">
+        <div className="flex flex-row  lg:flex-col items-center gap-4 mt-4">
           <Image src={dishes} alt="Menu Image" className="" />
           <Image src={bakery} alt="Menu Image" className="" />
           <Image src={spone} alt="Menu Image" className="" />
