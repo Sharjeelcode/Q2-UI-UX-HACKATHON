@@ -19,9 +19,9 @@ const Product: React.FC<Food> = ({
   _id,
 }) => {
   return (
-    <Link href={`/Shop/${_id}`}>
+    <Link href={`/Shop/${_id}`} className="hover:shadow-md">
       <div
-        className="relative bg-cover bg-center h-56 w-64 md:w-52 lg:w-64"
+        className="relative bg-cover bg-center h-56 w-64 md:w-52 lg:w-64 "
         style={{
           backgroundImage: `url(${urlFor(image).url()})`,
         }}
@@ -32,17 +32,20 @@ const Product: React.FC<Food> = ({
           </span>
         )}
       </div>
-      <h1 className="text-lg font-bold">{name}</h1>
-      {salePrice ? (
-        <div className="flex gap-2">
-          <p className="text-[#FF9F0D] ">${salePrice.toFixed(2)}</p>
-          <p className="text-gray-400 line-through">
-            ${originalPrice.toFixed(2)}
-          </p>
-        </div>
-      ) : (
-        <p className="text-[#FF9F0D] ">${originalPrice.toFixed(2)}</p>
-      )}
+      <div className="p-1">
+        <h1 className="text-lg font-bold">{name}</h1>
+
+        {salePrice ? (
+          <div className="flex gap-2">
+            <p className="text-[#FF9F0D] ">${salePrice.toFixed(2)}</p>
+            <p className="text-gray-400 line-through">
+              ${originalPrice.toFixed(2)}
+            </p>
+          </div>
+        ) : (
+          <p className="text-[#FF9F0D] ">${originalPrice.toFixed(2)}</p>
+        )}
+      </div>
     </Link>
   );
 };

@@ -68,7 +68,7 @@ function Page() {
   return (
     <>
       <AllPagesHeroImg page="Our Chef" />
-      <div className="grid grid-cols-1 md:grid-flow-row  md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3  mx-4 md:mx-[5vw] place-items-center my-[3vh] md:px-10 md:gap-4 lg:gap-5  ">
+      <div className="grid grid-cols-1 md:grid-flow-row  md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-3  mx-4 md:mx-[5vw] place-items-center my-[3vh]  gap-2 md:px-10 md:gap-4 lg:gap-5  ">
         {chefList.map((chef: Chef) => {
           return (
             <div key={chef._id}>

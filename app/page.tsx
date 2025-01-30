@@ -1,3 +1,4 @@
+"use client";
 import Hero from "./components/Hero";
 import Image from "next/image";
 import HomeSection6 from "./components/homeSection6";
@@ -32,13 +33,41 @@ import {
   chefgroup,
   restraindCreativeProcess,
   blogPost,
-  blogImage,
-  blogImg2,
-  blogImg3,
 } from "@/app/assets/exportAssets";
 import BlogCard from "./components/BlogCard";
 import Testmonials from "./components/Testmonials";
+import { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
+import Link from "next/link";
+interface blogCard {
+  name: string;
+  releaseDate: string;
+  image: string;
+  _id: string;
+}
+
+const query = `*[_type == "Blogs"]{
+  name,
+  blog_short_description,
+  image,
+  releaseDate,
+  _id
+}`;
+
 export default function Home() {
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    const getBlogs = async () => {
+      const blogdata = await client.fetch(query);
+      try {
+        setBlogs(blogdata);
+      } catch (error) {
+        console.log(error, "Blog card data not found");
+      }
+    };
+    getBlogs();
+  }, []);
+
   return (
     <>
       <div className="bg-[#0a0a0a] text-[#ededed]">
@@ -59,7 +88,7 @@ export default function Home() {
             <Hero />
           </div>
         </div>
-        {/* 2nd section */}
+        {/* About us section */}
         <div className="mx-4 md:mx-[10vw] my-[5vh] flex flex-wrap">
           <div className="flex gap-6  flex-wrap lg:flex-nowrap justify-center">
             <div className="flex flex-col gap-4 justify-center lg:w-[50%]">
@@ -102,9 +131,12 @@ export default function Home() {
                 </p>
               </div>
               <div className="hidden lg:flex">
-                <button className="bg-[#FF9F0D] rounded-full text-xl px-12 py-4">
+                <Link
+                  href={"/About"}
+                  className="bg-[#FF9F0D] rounded-full text-xl px-12 py-4"
+                >
                   Read More
-                </button>
+                </Link>
               </div>
             </div>
             <div className="w-auto lg:w-[50%] mx-4">
@@ -264,24 +296,23 @@ export default function Home() {
           <div className="flex flex-col items-center mb-3">
             <Image src={blogPost} alt="" className="items-center" />
             <h1 className="text-2xl md:text-[35px] font-bold">
-              <span className="text-[#FF9F0D]">La</span>test Nes & Blog
+              <span className="text-[#FF9F0D]">La</span>test News & Blog
             </h1>
           </div>
         </div>
         {/* 11th section */}
         <div className="flex flex-col items-center justify-center gap-2 md:flex-row ">
-          <BlogCard
-            image={blogImage}
-            title={" Pellentesque Non Efficitur Mi Aliquam Convallis Mi Quis"}
-          />
-          <BlogCard
-            image={blogImg2}
-            title={"Morbi Sodales Tellus Elit, In Blandit Risus Suscipit A"}
-          />
-          <BlogCard
-            image={blogImg3}
-            title={"Curabitur rutrum velit ac congue malesuada"}
-          />
+          {blogs.slice(0, 3).map((blog: blogCard) => {
+            return (
+              <BlogCard
+                key={blog._id}
+                id={blog._id}
+                image={blog.image}
+                name={blog.name}
+                releaseDate={blog.releaseDate}
+              />
+            );
+          })}
         </div>
       </div>
     </>
