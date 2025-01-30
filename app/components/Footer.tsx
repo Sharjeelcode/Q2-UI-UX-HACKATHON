@@ -44,8 +44,8 @@ function Footer() {
                   Groundlink for dependab safe, and professional chauffeured car
                   service in major cities across World.
                 </p>
-                <div className="flex gap-2">
-                  <Image src={watch} alt="" />
+                <div className="flex gap-2 flex-col lg:flex-row">
+                  <Image src={watch} alt="" className="h-20" />
                   <div>
                     <h4>Opening Houres</h4>
                     <h6 className="text-sm">Mon -Sat(8.00 - 6.00)</h6>
