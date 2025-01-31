@@ -30,7 +30,6 @@ import {
   s6i7,
   s6i8,
   chef,
-  chefgroup,
   restraindCreativeProcess,
   blogPost,
 } from "@/app/assets/exportAssets";
@@ -39,6 +38,7 @@ import Testmonials from "./components/Testmonials";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
+import Chefs from "./components/Chefs";
 interface blogCard {
   name: string;
   releaseDate: string;
@@ -155,7 +155,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* 3rd section */}
+        {/* Food Catagory section */}
         <div className="mx-[10vw] my-[10vh]">
           <div className="flex flex-col items-center mb-3">
             <Image src={foodCatagory} alt="" className="items-center" />
@@ -170,7 +170,7 @@ export default function Home() {
             <Image src={nugets} alt="" className="w-auto sm:w-full mb-2" />
           </div>
         </div>
-        {/* 4th section */}
+        {/* Why Choose us section */}
         <div className="mx-4 md:mx-[10vw] my-[5vh] flex flex-wrap">
           <div className="flex gap-6  flex-wrap lg:flex-nowrap justify-center">
             <div className="flex flex-col gap-4 justify-center lg:w-[50%]">
@@ -194,11 +194,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* 5th section */}
+        {/* section */}
         <div>
           <Image src={clientImage} alt="" />
         </div>
-        {/* 6th section */}
+        {/* Choose & pick  section */}
         <div className="mx-4 md:mx-[10vw] my-[10vh]">
           <div className="flex flex-col items-center mb-3">
             <Image src={choose} alt="" className="items-center" />
@@ -277,16 +277,26 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* 7th section */}
-        <div className="mx-4 md:mx-[10vw] my-[5vh]">
-          <div className="flex flex-col items-center mb-3">
-            <Image src={chef} alt="" className="items-center" />
-            <h1 className="text-2xl md:text-[35px] font-bold">
-              <span className="text-[#FF9F0D]">Me</span>et Our Chef
-            </h1>
+        {/* Meet Our Chefs section */}
+        <div>
+          <div className="mx-4 md:mx-[10vw] my-[5vh]">
+            <div className="flex flex-col items-center mb-3">
+              <Image src={chef} alt="" className="items-center" />
+              <h1 className="text-2xl md:text-[35px] font-bold">
+                <span className="text-[#FF9F0D]">Me</span>et Our Chef
+              </h1>
+            </div>
+          </div>
+          <Chefs />
+          <div className="flex justify-center my-7 ">
+            <Link
+              href={"/Chefs"}
+              className="rounded-full px-12 py-4 border-2 border-[#FF9F0D]"
+            >
+              See More
+            </Link>
           </div>
         </div>
-        <Image src={chefgroup} alt="" className="pr-5 lg:pr-10" />
         {/* 8th section */}
         <Testmonials />
         {/* 9th section */}
@@ -301,7 +311,7 @@ export default function Home() {
           </div>
         </div>
         {/* 11th section */}
-        <div className="flex flex-col items-center justify-center gap-2 md:flex-row ">
+        <div className="flex flex-col items-center justify-center gap-2 lg:flex-row ">
           {blogs.slice(0, 3).map((blog: blogCard) => {
             return (
               <BlogCard
