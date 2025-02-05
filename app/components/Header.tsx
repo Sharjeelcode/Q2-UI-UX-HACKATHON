@@ -101,7 +101,13 @@ function Header() {
                   className="w-[24px] h-[24px] mx-2"
                 />
                 <Image src={User} alt="" className="w-[24px] h-[24px] mx-2" />
-                <Image src={basket} alt="" className="w-[24px] h-[24px] mx-2" />
+                <Link href={"/Cart"}>
+                  <Image
+                    src={basket}
+                    alt=""
+                    className="w-[24px] h-[24px] mx-2"
+                  />
+                </Link>
               </div>
             </div>
           </div>
