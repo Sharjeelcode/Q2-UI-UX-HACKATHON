@@ -37,63 +37,74 @@ function Page() {
         </div>
 
         {/* Products Mapping */}
-        {cart.map((product) => (
-          <div
-            key={product.id}
-            className="flex flex-col md:flex-row gap-4 py-4 border-b border-gray-300"
-          >
-            {/* Product Column */}
-            <div className="flex gap-2 md:gap-4 items-center md:w-[30%]">
-              <Image
-                src={urlFor(product.image).url()}
-                alt={product.name}
-                className="w-20 h-20 object-cover rounded-md"
-                width={312}
-                height={267}
-              />
-              <div className="flex justify-between w-full">
-                <div>
-                  <h1 className="text-lg font-semibold">{product.name}</h1>
-                  <Image src={stars} alt="stars" />
+
+        {cart.length > 0 ? (
+          cart.map((product) => (
+            <div
+              key={product.id}
+              className="flex flex-col md:flex-row gap-4 py-4 border-b border-gray-300"
+            >
+              {/* Product Column */}
+              <div className="flex gap-2 md:gap-4 items-center md:w-[30%]">
+                <Image
+                  src={urlFor(product.image).url()}
+                  alt={product.name}
+                  className="w-20 h-20 object-cover rounded-md"
+                  width={312}
+                  height={267}
+                />
+                <div className="flex justify-between w-full">
+                  <Link href={`Shop/${product.id}`}>
+                    <h1 className="text-lg font-semibold">{product.name}</h1>
+                    <Image src={stars} alt="stars" />
+                  </Link>
+                  <div className="text-gray-500 text-lg">
+                    ${product.price}.00
+                  </div>
                 </div>
-                <div className="text-gray-500 text-lg">${product.price}.00</div>
+              </div>
+              <div className="flex items-center md:w-[70%] justify-around">
+                {/* Price Column */}
+
+                {/* Quantity Column */}
+                <div className="flex items-center">
+                  <button
+                    className="border-2 py-1 px-4 border-r-0"
+                    onClick={() => decreaseItem(product.id)}
+                  >
+                    -
+                  </button>
+                  <p className="border-2 px-4 py-1">{product.quantity}</p>
+                  <button
+                    className="border-2 px-4 py-1 border-l-0"
+                    onClick={() => addItem(product)}
+                  >
+                    +
+                  </button>
+                </div>
+
+                {/* Total Price Column */}
+                <div className="text-gray-500 text-lg">
+                  ${product.price * product.quantity}.00
+                </div>
+
+                {/* Remove Button Column */}
+                <button
+                  className="hover:text-[#FF9F0D] cursor-pointer text-2xl"
+                  onClick={() => removeItem(product.id)}
+                >
+                  X
+                </button>
               </div>
             </div>
-            <div className="flex items-center md:w-[70%] justify-around">
-              {/* Price Column */}
-
-              {/* Quantity Column */}
-              <div className="flex items-center">
-                <button
-                  className="border-2 py-1 px-4 border-r-0"
-                  onClick={() => decreaseItem(product.id)}
-                >
-                  -
-                </button>
-                <p className="border-2 px-4 py-1">{product.quantity}</p>
-                <button
-                  className="border-2 px-4 py-1 border-l-0"
-                  onClick={() => addItem(product)}
-                >
-                  +
-                </button>
-              </div>
-
-              {/* Total Price Column */}
-              <div className="text-gray-500 text-lg">
-                ${product.price * product.quantity}.00
-              </div>
-
-              {/* Remove Button Column */}
-              <button
-                className="hover:text-[#FF9F0D] cursor-pointer text-2xl"
-                onClick={() => removeItem(product.id)}
-              >
-                X
-              </button>
-            </div>
+          ))
+        ) : (
+          <div className="flex h-[20vh] items-center justify-center">
+            <h1 className="text-center text-2xl lg:text-4xl font-bold text-[#FF9F0D]">
+              Cart is Empty
+            </h1>
           </div>
-        ))}
+        )}
 
         {/* coupen and total bill */}
         <div className="flex flex-col md:flex-row my-8 gap-8">
