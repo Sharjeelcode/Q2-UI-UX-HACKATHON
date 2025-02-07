@@ -33,6 +33,7 @@ function Header() {
   return (
     <>
       {/* small devices header */}
+
       <MobileHeader menuitem={headermenu} />
 
       {/* condional rendring of header menu for diffrent pages */}
