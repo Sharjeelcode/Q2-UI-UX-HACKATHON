@@ -31,8 +31,7 @@ const Product: React.FC<Food> = ({
   };
 
   return (
-    <Link
-      href={`/Shop/${_id}`}
+    <div
       className="hover:shadow-md"
       onMouseEnter={() => setaddCart("flex")}
       onMouseLeave={() => setaddCart("hidden")}
@@ -57,7 +56,7 @@ const Product: React.FC<Food> = ({
           </button>
         </div>
       </div>
-      <div className="p-1">
+      <Link href={`/Shop/${_id}`} className="p-1">
         <h1 className="text-lg font-bold">{name}</h1>
 
         {salePrice ? (
@@ -70,8 +69,8 @@ const Product: React.FC<Food> = ({
         ) : (
           <p className="text-[#FF9F0D] ">${originalPrice.toFixed(2)}</p>
         )}
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

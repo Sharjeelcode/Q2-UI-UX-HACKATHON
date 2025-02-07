@@ -133,7 +133,7 @@ function Page() {
                 <h1 className="text-lg font-bold">{`$${totalPrice}.00`}</h1>
               </div>
             </div>
-            <Link href={""} className="">
+            <Link href={"/Checkout"} className="">
               <div className="flex justify-center items-center rounded-md gap-1 text-white bg-[#FF9F0D] text-lg md:text-xl my-4 py-4">
                 <h1 className="">Proceed to Checkout</h1>
                 <PiCheckSquareOffset />

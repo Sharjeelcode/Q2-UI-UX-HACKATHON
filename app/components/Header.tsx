@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import searchIcon from "@/app/assets/Group.png";
 import MagnifyingGlass from "@/app/assets/MagnifyingGlass.png";
 import User from "@/app/assets/User.png";
@@ -8,12 +8,20 @@ import basket from "@/app/assets/basket.png";
 import MobileHeader from "./MobileHeader";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import useCartStore from "../store/cartStore";
 interface MenuItem {
   id: string;
   contant: string;
 }
 function Header() {
   const pathname = usePathname();
+  const { cart } = useCartStore(); // Get cart from Zustand store
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    const total = cart.reduce((acc, item) => acc + item.quantity, 0);
+    setTotalItems(total);
+  }, [cart]);
   const headermenu: MenuItem[] = [
     { id: "Home", contant: "/Home" },
     { id: "Menu", contant: "/Menu" },
@@ -54,17 +62,30 @@ function Header() {
                   ))}
                 </div>
                 <div>
-                  <div className="flex items-center">
-                    <div className="flex items-center justify-between px-4 border-2 border-[#FF9F0D] w-[210px]  h-[44px] rounded-[27px] ">
-                      <h3>Search...</h3>
-                      <Image src={searchIcon} alt="" />
+                  <div className="flex items-center justify-end gap-4">
+                    {/* Search Bar */}
+                    <div className="flex items-center justify-between px-4 border-2 border-[#FF9F0D] w-[300px] h-[44px] rounded-[27px]">
+                      <h3 className="text-gray-500">Search...</h3>
+                      <Image src={searchIcon} alt="Search Icon" />
                     </div>
-                    <Link href={"/Cart"}>
+                    <Image
+                      src={User}
+                      alt=""
+                      className="w-[24px] h-[24px] mx-2"
+                    />
+
+                    {/* Cart Icon */}
+                    <Link href={"/Cart"} className="relative flex items-center">
                       <Image
                         src={basket}
-                        alt=""
+                        alt="Basket Icon"
                         className="w-[24px] h-[24px] mx-2"
                       />
+                      {totalItems > 0 && (
+                        <h1 className="text-white bg-red-500 w-5 h-5 flex items-center justify-center rounded-full absolute top-[-8px] right-[-5px] text-sm">
+                          {totalItems}
+                        </h1>
+                      )}
                     </Link>
                   </div>
                 </div>
@@ -76,9 +97,11 @@ function Header() {
         <div className="bg-[#0a0a0a] text-[#ededed]">
           {/* large devices header */}
           <div className="hidden lg:flex lg:fixed top-0 w-screen  justify-around items-center py-6 z-50 bg-[#0a0a0a]">
-            <h1 className="text-center font-bold text-2xl">
-              <span className="text-[#FF9F0D] ">Food</span>tuck
-            </h1>
+            <Link href={"/"}>
+              <h1 className="text-center font-bold text-2xl">
+                <span className="text-[#FF9F0D] ">Food</span>tuck
+              </h1>
+            </Link>
             <div className="flex gap-4 items-center text-lg">
               {headermenu.map((menu) => (
                 <ul key={menu.id}>
@@ -101,12 +124,17 @@ function Header() {
                   className="w-[24px] h-[24px] mx-2"
                 />
                 <Image src={User} alt="" className="w-[24px] h-[24px] mx-2" />
-                <Link href={"/Cart"}>
+                <Link href={"/Cart"} className="relative flex items-center">
                   <Image
                     src={basket}
-                    alt=""
+                    alt="Basket Icon"
                     className="w-[24px] h-[24px] mx-2"
                   />
+                  {totalItems > 0 && (
+                    <h1 className="text-white bg-red-500 w-5 h-5 flex items-center justify-center rounded-full absolute top-[-8px] right-[-5px] text-sm">
+                      {totalItems}
+                    </h1>
+                  )}
                 </Link>
               </div>
             </div>
