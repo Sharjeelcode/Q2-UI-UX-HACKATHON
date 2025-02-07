@@ -96,6 +96,7 @@ function Page({ params }: { params: { id: string } }) {
           orignalPrice={productDetials.originalPrice}
           tags={productDetials.tags}
           catagory={productDetials.category}
+          id={productDetials._id}
         />
       </div>
       <div className="flex flex-col  md:mx-[5vw]  my-[3vh] px-2  ">

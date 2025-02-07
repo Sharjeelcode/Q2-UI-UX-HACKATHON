@@ -1,34 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AllPagesHeroImg from "../components/AllPagesHeroImg";
-import burger from "@/app/assets/burger.png";
+
 import stars from "@/app/assets/Star.png";
 import Link from "next/link";
 import { PiCheckSquareOffset } from "react-icons/pi";
+import useCartStore from "../store/cartStore";
+import { urlFor } from "@/sanity/lib/image";
 function Page() {
-  const [productQuantity, setProductQuantity] = useState(1);
-
-  function handleQuantity(value: string) {
-    if (value === "-" && productQuantity > 1) {
-      setProductQuantity(productQuantity - 1);
-    }
-    if (value === "+") {
-      setProductQuantity(productQuantity + 1);
-    }
-  }
-
-  const products = [
-    { id: 1, name: "Burger", image: burger, price: 35, rating: stars },
-    { id: 2, name: "Pizza", image: burger, price: 15, rating: stars },
-    {
-      id: 3,
-      name: "Chocolate Muffin",
-      image: burger,
-      price: 45,
-      rating: stars,
-    },
-  ];
+  const { cart, addItem, removeItem, decreaseItem } = useCartStore();
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  useEffect(() => {
+    const total = cart.reduce(
+      (sum, item) => sum + item.quantity * item.price,
+      0
+    );
+    setTotalPrice(total);
+  }, [cart]);
 
   return (
     <div>
@@ -48,7 +37,7 @@ function Page() {
         </div>
 
         {/* Products Mapping */}
-        {products.map((product) => (
+        {cart.map((product) => (
           <div
             key={product.id}
             className="flex flex-col md:flex-row gap-4 py-4 border-b border-gray-300"
@@ -56,14 +45,16 @@ function Page() {
             {/* Product Column */}
             <div className="flex gap-2 md:gap-4 items-center md:w-[30%]">
               <Image
-                src={product.image}
+                src={urlFor(product.image).url()}
                 alt={product.name}
                 className="w-20 h-20 object-cover rounded-md"
+                width={312}
+                height={267}
               />
               <div className="flex justify-between w-full">
                 <div>
                   <h1 className="text-lg font-semibold">{product.name}</h1>
-                  <Image src={product.rating} alt="stars" />
+                  <Image src={stars} alt="stars" />
                 </div>
                 <div className="text-gray-500 text-lg">${product.price}.00</div>
               </div>
@@ -75,14 +66,14 @@ function Page() {
               <div className="flex items-center">
                 <button
                   className="border-2 py-1 px-4 border-r-0"
-                  onClick={() => handleQuantity("-")}
+                  onClick={() => decreaseItem(product.id)}
                 >
                   -
                 </button>
-                <p className="border-2 px-4 py-1">{productQuantity}</p>
+                <p className="border-2 px-4 py-1">{product.quantity}</p>
                 <button
                   className="border-2 px-4 py-1 border-l-0"
-                  onClick={() => handleQuantity("+")}
+                  onClick={() => addItem(product)}
                 >
                   +
                 </button>
@@ -90,13 +81,16 @@ function Page() {
 
               {/* Total Price Column */}
               <div className="text-gray-500 text-lg">
-                ${product.price * productQuantity}.00
+                ${product.price * product.quantity}.00
               </div>
 
               {/* Remove Button Column */}
-              <div className="hover:text-[#FF9F0D] cursor-pointer text-2xl">
+              <button
+                className="hover:text-[#FF9F0D] cursor-pointer text-2xl"
+                onClick={() => removeItem(product.id)}
+              >
                 X
-              </div>
+              </button>
             </div>
           </div>
         ))}
@@ -127,7 +121,7 @@ function Page() {
             <div className="flex flex-col gap-4 border-2 rounded-md px-4 py-4">
               <div className="flex justify-between">
                 <h1 className="text-lg font-bold">Cart Subtotal</h1>
-                <h1 className="text-lg font-bold">$120.00</h1>
+                <h1 className="text-lg font-bold">{`$${totalPrice}.00`}</h1>
               </div>
               <div className="flex justify-between">
                 <h1 className="text-gray-500">Shipping Charges</h1>
@@ -136,7 +130,7 @@ function Page() {
               <hr />
               <div className="flex justify-between">
                 <h1 className="text-lg font-bold">Total Amount</h1>
-                <h1 className="text-lg font-bold">$250.00</h1>
+                <h1 className="text-lg font-bold">{`$${totalPrice}.00`}</h1>
               </div>
             </div>
             <Link href={""} className="">

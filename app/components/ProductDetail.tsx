@@ -1,5 +1,4 @@
-import React from "react";
-import QuanitityBtn from "./QuanitityBtn";
+import React, { useState } from "react";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
@@ -8,6 +7,7 @@ import Image from "next/image";
 import star from "@/app/assets/Star.png";
 import { urlFor } from "@/sanity/lib/image";
 import freshLime from "@/app/assets/freshLime.png";
+import useCartStore from "../store/cartStore";
 
 interface productDetail {
   image: string;
@@ -16,7 +16,9 @@ interface productDetail {
   orignalPrice: number;
   tags: string[];
   catagory: string;
+  id: string;
 }
+
 const ProductDetail: React.FC<productDetail> = ({
   image,
   name,
@@ -24,7 +26,17 @@ const ProductDetail: React.FC<productDetail> = ({
   orignalPrice,
   tags,
   catagory,
+  id,
 }) => {
+  const { addItem } = useCartStore();
+  const [itemQuantity, setItemQuantity] = useState<number>(1);
+  const item = {
+    id: id,
+    name: name,
+    price: salePrice ? salePrice : orignalPrice,
+    image: image,
+    quantity: itemQuantity,
+  };
   return (
     <div className="flex flex-col lg:flex-row gap-4">
       <div className="md:w-[40%] lg:w-[70%]">
@@ -67,9 +79,28 @@ const ProductDetail: React.FC<productDetail> = ({
         </div>
         <p className="py-4">Dictum/cursus/Risus</p>
         <div className="flex gap-4 pb-4">
-          <QuanitityBtn />
+          <div className="flex">
+            <button
+              className="border-2 py-1 px-4 border-r-0"
+              onClick={() =>
+                setItemQuantity((prev) => (prev > 1 ? prev - 1 : 1))
+              }
+            >
+              -
+            </button>
+            <p className="border-2 px-4 py-1">{itemQuantity}</p>
+            <button
+              className="border-2 px-4 py-1 border-l-0"
+              onClick={() => setItemQuantity((prev) => prev + 1)}
+            >
+              +
+            </button>
+          </div>
           <div>
-            <button className="bg-[#FF9F0D] text-sm px-4 lg:px-6 text-white flex gap-2 py-2 items-center">
+            <button
+              className="bg-[#FF9F0D] text-sm px-4 lg:px-6 text-white flex gap-2 py-2 items-center"
+              onClick={() => addItem({ ...item, quantity: itemQuantity })}
+            >
               <MdOutlineShoppingBag />
               Add to cart
             </button>

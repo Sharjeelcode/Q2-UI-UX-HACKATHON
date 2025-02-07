@@ -1,6 +1,7 @@
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import useCartStore from "../store/cartStore";
 
 // Interface for Food Props
 interface Food {
@@ -18,8 +19,24 @@ const Product: React.FC<Food> = ({
   image,
   _id,
 }) => {
+  const [addCart, setaddCart] = useState("hidden");
+  const { addItem } = useCartStore();
+
+  const item = {
+    id: _id,
+    name: name,
+    price: salePrice ? salePrice : originalPrice,
+    image: image,
+    quantity: 1,
+  };
+
   return (
-    <Link href={`/Shop/${_id}`} className="hover:shadow-md">
+    <Link
+      href={`/Shop/${_id}`}
+      className="hover:shadow-md"
+      onMouseEnter={() => setaddCart("flex")}
+      onMouseLeave={() => setaddCart("hidden")}
+    >
       <div
         className="relative bg-cover bg-center h-56 w-64 md:w-52 lg:w-64 "
         style={{
@@ -31,6 +48,14 @@ const Product: React.FC<Food> = ({
             Sell
           </span>
         )}
+        <div className={`${addCart}  justify-center `}>
+          <button
+            className="text-center absolute bottom-2 bg-black text-white px-12 py-3 hover:py-4 hover:px-14"
+            onClick={() => addItem(item)}
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
       <div className="p-1">
         <h1 className="text-lg font-bold">{name}</h1>
