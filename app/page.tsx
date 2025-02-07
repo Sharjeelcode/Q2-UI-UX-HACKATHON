@@ -2,6 +2,8 @@
 import Hero from "./components/Hero";
 import Image from "next/image";
 import HomeSection6 from "./components/homeSection6";
+import foodBanner from "./assets/food-banner.png";
+import stats from "./assets/stats.webp";
 import {
   heroBackgroundImg,
   aboutFont,
@@ -39,6 +41,13 @@ import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 import Chefs from "./components/Chefs";
+import {
+  FaAward,
+  FaPlay,
+  FaSmile,
+  FaUserTie,
+  FaUtensils,
+} from "react-icons/fa";
 interface blogCard {
   name: string;
   releaseDate: string;
@@ -195,8 +204,46 @@ export default function Home() {
           </div>
         </div>
         {/* section */}
-        <div>
-          <Image src={clientImage} alt="" />
+        <div className="w-full flex  sm:flex-row md:block">
+          {/* Background Image */}
+
+          {/* Overlay with Stats */}
+          <div
+            className=" flex flex-col justify-evenly sm:flex-row items-center  gap-8 px-6 py-6 w-full  lg:h-96 text-white"
+            style={{
+              backgroundImage: `url(${stats.src})`, // Replace with your image path
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Stat 1: Professional Chefs */}
+            <div className="flex flex-col justify-center items-center text-center ">
+              <FaUserTie className="text-4xl md:text-5xl mb-2 text-[#FF9F0D]" />
+              <h3 className="text-lg md:text-xl font-bold">Chefs</h3>
+              <p className="text-xl md:text-2xl">420</p>
+            </div>
+
+            {/* Stat 2: Items Of Food */}
+            <div className="flex flex-col justify-center items-center ">
+              <FaUtensils className="text-4xl md:text-5xl mb-2 text-[#FF9F0D]" />
+              <h3 className="text-lg md:text-xl font-bold">Food Items</h3>
+              <p className="text-xl md:text-2xl">320</p>
+            </div>
+
+            {/* Stat 3: Years Of Experience */}
+            <div className="flex flex-col justify-center items-center  ">
+              <FaAward className="text-4xl md:text-5xl mb-2 text-[#FF9F0D]" />
+              <h3 className="text-lg md:text-xl font-bold">Experience</h3>
+              <p className="text-xl md:text-2xl">30+</p>
+            </div>
+
+            {/* Stat 4: Happy Customers */}
+            <div className="flex flex-col justify-center items-center  ">
+              <FaSmile className="text-4xl md:text-5xl mb-2 text-[#FF9F0D]" />
+              <h3 className="text-lg md:text-xl font-bold">Customers</h3>
+              <p className="text-xl md:text-2xl">220</p>
+            </div>
+          </div>
         </div>
         {/* Choose & pick  section */}
         <div className="mx-4 md:mx-[10vw] my-[10vh]">
@@ -300,7 +347,47 @@ export default function Home() {
         {/* 8th section */}
         <Testmonials />
         {/* 9th section */}
-        <Image src={restraindCreativeProcess} alt="" />
+
+        <div
+          className="relative flex flex-col md:flex-row items-center justify-center  text-white p-6 h-full"
+          style={{
+            backgroundImage: `url(${foodBanner.src})`, // Replace with your image path
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0  z-0"></div>
+
+          {/* Text Section */}
+          <div className="relative z-10 md:w-1/2 space-y-6 text-right px-10 md:text-right md:ml-auto">
+            <h3 className="text-lg font-semibold text-[#FF9F0D] font-great-vibes">
+              Roasted Elite Plates
+            </h3>
+            <h1 className="text-3xl font-bold leading-snug">
+              We Document Every Food
+              <br /> Bean Process
+              <span className="text-[#FF9F0D]">until it is saved</span>
+            </h1>
+            <p className="text-gray-300">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              diam pellentesque bibendum.
+            </p>
+            <div className="flex justify-end   gap-4">
+              <Link
+                href={"/About"}
+                className="bg-[#FF9F0D] text-white px-6 py-3 rounded-md hover:bg-[#FF9F0D] transition"
+              >
+                Read More
+              </Link>
+              <button className="flex items-center gap-2 border border-[#FF9F0D] text-[#FF9F0D] px-6 py-3 rounded-md hover:bg-[#FF9F0D] hover:text-white transition">
+                <FaPlay className="text-sm" />
+                Play Video
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* 10th section */}
         <div className="mx-4 md:mx-[10vw] my-[5vh]">
           <div className="flex flex-col items-center mb-3">
