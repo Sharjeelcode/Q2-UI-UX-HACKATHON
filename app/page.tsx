@@ -20,7 +20,6 @@ import {
   sec4font,
   iconbox,
   experience,
-  clientImage,
   choose,
   sec6pic,
   s6i1,
@@ -32,7 +31,6 @@ import {
   s6i7,
   s6i8,
   chef,
-  restraindCreativeProcess,
   blogPost,
 } from "@/app/assets/exportAssets";
 import BlogCard from "./components/BlogCard";
