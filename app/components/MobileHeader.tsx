@@ -30,10 +30,12 @@ function MobileHeader({ menuitem }: MobileHeaderProps) {
   }, [cart]);
   return (
     <>
-      <div className="lg:hidden  sticky top-0 z-50 flex justify-between px-2 py-2  bg-black text-white">
-        <h1 className="font-bold text-xl">
-          <span className="text-[#FF9F0D] ">Food</span>tuck
-        </h1>
+      <div className="lg:hidden  sticky top-0 z-50 flex justify-between px-2 py-2  bg-black text-white ">
+        <Link href={"/"}>
+          <h1 className="font-bold text-xl">
+            <span className="text-[#FF9F0D] ">Food</span>tuck
+          </h1>
+        </Link>
         <div className="flex gap-2">
           <Link href={"/Cart"} className="relative flex items-center">
             <Image
