@@ -2,13 +2,13 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import MagnifyingGlass from "@/app/assets/MagnifyingGlass.png";
-import User from "@/app/assets/User.png";
 import basket from "@/app/assets/basket.png";
 import MobileHeader from "./MobileHeader";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import useCartStore from "../store/cartStore";
 import SearchBar from "./SearchBar";
+import UserIcon from "./UserIcon";
 interface MenuItem {
   id: string;
   contant: string;
@@ -73,15 +73,10 @@ function Header() {
                   ))}
                 </div>
                 <div>
-                  <div className="flex items-center justify-end gap-4">
+                  <div className="flex items-center justify-end gap-2">
                     {/* Search Bar */}
                     <SearchBar />
-                    <Image
-                      src={User}
-                      alt=""
-                      className="w-[24px] h-[24px] mx-2"
-                    />
-
+                    <UserIcon />
                     {/* Cart Icon */}
                     <Link href={"/Cart"} className="relative flex items-center">
                       <Image
@@ -125,7 +120,7 @@ function Header() {
               ))}
             </div>
             <div>
-              <div className="flex items-center">
+              <div className="flex items-center gap-2">
                 {ShowSearchBar ? (
                   <div>
                     <Image
@@ -139,7 +134,8 @@ function Header() {
                   <SearchBar />
                 )}
 
-                <Image src={User} alt="" className="w-[24px] h-[24px] mx-2" />
+                <UserIcon />
+
                 <Link href={"/Cart"} className="relative flex items-center">
                   <Image
                     src={basket}

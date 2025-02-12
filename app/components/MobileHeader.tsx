@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import useCartStore from "../store/cartStore";
 import basket from "@/app/assets/basket.png";
+import UserIcon from "./UserIcon";
+import SearchBar from "./SearchBar";
 
 interface MobileHeaderProps {
   menuitem: { id: string; contant: string }[];
@@ -36,7 +38,9 @@ function MobileHeader({ menuitem }: MobileHeaderProps) {
             <span className="text-[#FF9F0D] ">Food</span>tuck
           </h1>
         </Link>
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
+          <UserIcon />
+
           <Link href={"/Cart"} className="relative flex items-center">
             <Image
               src={basket}
@@ -71,6 +75,9 @@ function MobileHeader({ menuitem }: MobileHeaderProps) {
               </li>
             </ul>
           ))}
+          <div className="flex items-center">
+            <SearchBar />
+          </div>
         </div>
       )}
     </>

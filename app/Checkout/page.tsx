@@ -4,6 +4,7 @@ import AllPagesHeroImg from "../components/AllPagesHeroImg";
 import useCartStore from "../store/cartStore";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import Link from "next/link";
 
 interface Country {
   code: string;
@@ -224,9 +225,11 @@ function Page() {
             </div>
 
             {/* Complete Order Button */}
-            <button className="w-full mt-6 bg-black text-white py-3 rounded-md hover:bg-gray-900">
-              Complete order
-            </button>
+            <Link href={"/Ordercomplete"}>
+              <button className="w-full mt-6 bg-black text-white py-3 rounded-md hover:bg-gray-900">
+                Complete order
+              </button>
+            </Link>
           </div>
         </div>
       </div>
